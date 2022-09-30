@@ -21,7 +21,7 @@ public class EnemyAttacker : MonoBehaviour
 
     public void Attack()
     {
-        _elapsedTime = Time.deltaTime;
+        _elapsedTime += Time.deltaTime;
 
         if (_elapsedTime > _secondsBetweenAttack)
         {

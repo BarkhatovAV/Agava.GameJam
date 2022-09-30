@@ -3,7 +3,7 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class ApproximationToTarget : Conditional
 {
-    public SharedInt TargetDistance;
+    public SharedFloat TargetDistance;
     public SharedEnemyMover EnemyMover;
 
     public override TaskStatus OnUpdate() 
