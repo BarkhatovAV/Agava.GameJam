@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
             MoveDirection(Vector3.forward);
-        if(Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
             MoveDirection(-Vector3.forward);
         if (Input.GetKey(KeyCode.D))
             MoveDirection(Vector3.right);
@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveDirection(Vector3 direction)
     {
-        transform.position = transform.position + direction * _speed * Time.deltaTime;
+        Vector3 move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * direction;
+
+        transform.position += move * _speed * Time.deltaTime;
     }
 }
