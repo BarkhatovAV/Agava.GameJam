@@ -13,7 +13,7 @@ public class MachineGun : Weapon, IReloadable
 
     private void Start()
     {
-        _bullets.AddBullets(100);
+        _bullets.AddBullets(100000);
         Reload();
     }
 
