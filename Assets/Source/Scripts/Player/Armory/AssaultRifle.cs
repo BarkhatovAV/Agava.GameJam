@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AssaultRifle : Weapon, IReloadable
 {
-    private int _clipSize;
+    [SerializeField] private int _clipSize;
+
+    private bool _isCanShoot;
+    private BulletsArmory _bullets = new BulletsArmory();
     public int ClipSize => _clipSize;
 
     public void Fire(RaycastHit hitInfo)
     {
         if (_isCanShoot == true)
         {
-            OnFire();
-
             if (hitInfo.collider.TryGetComponent(out Ground ground) && _shotDistance > hitInfo.distance)
                 print(hitInfo.distance);
 
