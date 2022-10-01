@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class WeaponArmory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<Weapon> _weapons;
+
+    private int _currentWeaponIndex;
+
+    public Weapon ChangeWeapon()
     {
-        
+        if (_currentWeaponIndex + 1 == _weapons.Count)
+            _currentWeaponIndex = 0;
+        else
+            _currentWeaponIndex++;
+
+        return _weapons[_currentWeaponIndex];
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AddBullets()
     {
-        
+
+    }
+
+    private void ShootBullets()
+    {
+
     }
 }
