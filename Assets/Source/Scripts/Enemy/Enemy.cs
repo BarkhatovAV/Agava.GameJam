@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(EnemyMover), typeof(EnemyAttacker), typeof(EnemyHealth))]
 [RequireComponent(typeof(BehaviorTree))]
-public class Enemy : MonoBehaviour
+public class Enemy : PoolObject
 {
     private EnemyMover _mover;
     private EnemyAttacker _attacker;
