@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 public class EnemyHealth : MonoBehaviour
@@ -15,7 +14,8 @@ public class EnemyHealth : MonoBehaviour
 
     private Animator _animator;
 
-    public event UnityAction Ended;
+    public event Action Ended;
+    public event Action Died;
 
     public float DelayBeforeDeath => _delayBeforeDeath;
 
@@ -50,6 +50,6 @@ public class EnemyHealth : MonoBehaviour
         _animator.SetBool(EnemyAnimator.Params.IsDying, true);
         yield return new WaitForSeconds(_delayBeforeDeath);
         Instantiate(_bloodExplosion, transform.position, _bloodExplosion.transform.rotation);
-        Destroy(gameObject);
+        Died?.Invoke();
     }
 }
