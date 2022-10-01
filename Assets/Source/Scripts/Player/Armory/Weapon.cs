@@ -19,6 +19,11 @@ public abstract class Weapon : MonoBehaviour
     {
         _particleSystem.Stop();
     }
+    
+    public void AddAmmo(int value)
+    {
+        _amountAmmo += value;
+    }
 
     public void Fire(RaycastHit hitInfo)
     {
@@ -70,4 +75,5 @@ public abstract class Weapon : MonoBehaviour
 
         _isCanShoot = true;
     }
+
 }
