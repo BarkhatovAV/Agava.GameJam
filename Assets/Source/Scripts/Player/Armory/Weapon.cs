@@ -10,21 +10,11 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _delayBetweenShots;
     [SerializeField] private ParticleSystem _particleSystem;
 
-    private bool _isCanShoot = true;
-    private int _currentClipAmount;
-    private int _amountAmmo;
-
     private void Awake()
     {
         _particleSystem.Stop();
     }
     
-    public void AddAmmo(int value)
-    {
-        _amountAmmo += value;
-    }
-
-
 
     private void Update()
     {
@@ -33,20 +23,4 @@ public abstract class Weapon : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             _particleSystem.Stop();
     }
-
-
-
-    private void OnFire()
-    {
-        _currentClipAmount--;
-        _amountAmmo--;
-    }
-
-    private bool CheckNeedReload()
-    {
-        return _currentClipAmount == 0;
-    }
-
-
-
 }
