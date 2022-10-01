@@ -12,6 +12,8 @@ public class EnemyHealth : MonoBehaviour
 
     public event UnityAction Ended;
 
+    public float DelayBeforeDeath => _delayBeforeDeath;
+
     public void Apply(int damage)
     {
         if (damage < 0)
@@ -21,6 +23,11 @@ public class EnemyHealth : MonoBehaviour
 
         if (_value <= 0)
             StartCoroutine(Die());
+    }
+
+    public void Kill()
+    {
+        Apply(_value);
     }
 
     private IEnumerator Die()
