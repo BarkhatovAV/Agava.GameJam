@@ -13,7 +13,7 @@ public class AssaultRifle : Weapon, IReloadable
 
     public override void Fire(RaycastHit hitInfo)
     {
-        if (_isCanShoot == true)
+        if ((_isCanShoot == true) && (CheckDelay() == true))
         {
             base.Fire(hitInfo);
 

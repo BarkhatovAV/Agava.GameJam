@@ -11,10 +11,19 @@ public class MachineGun : Weapon, IReloadable
     private int _currentClipAmount;
     private bool _isCanShoot;
 
+    private void Start()
+    {
+        _bullets.AddBullets(100);
+        Reload();
+    }
+
     public override void Fire(RaycastHit hitInfo)
     {
-        if (_isCanShoot == true)
+        if ((_isCanShoot == true) && (CheckDelay() == true))
         {
+            _currentClipAmount--;
+            _bullets.ShotBullet();
+
             base.Fire(hitInfo);
 
             if (CheckNeedReload() == true)
