@@ -12,5 +12,4 @@ public abstract class WeaponAnimator : MonoBehaviour
 
     protected abstract void StopAnimation();
     protected abstract void StartAnimation();
-
 }
