@@ -11,12 +11,11 @@ public class MachineGun : Weapon, IReloadable
     private int _currentClipAmount;
     private bool _isCanShoot;
 
-    public void Fire(RaycastHit hitInfo)
+    public override void Fire(RaycastHit hitInfo)
     {
         if (_isCanShoot == true)
         {
-            if (hitInfo.collider.TryGetComponent(out Ground ground) && _shotDistance > hitInfo.distance)
-                print(hitInfo.distance);
+            base.Fire(hitInfo);
 
             if (CheckNeedReload() == true)
                 Reload();
