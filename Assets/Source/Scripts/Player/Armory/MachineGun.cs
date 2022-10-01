@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MachineGun : Weapon, IReloadable
 {
-    private int _clipSize;
+    [SerializeField] private int _clipSize;
     public int ClipSize => _clipSize;
 
     public void Fire(RaycastHit hitInfo)
