@@ -32,6 +32,20 @@ public class PlayerShooter : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Q))
             ChangeWeapon();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            TryReload();
+    }
+
+    private void TryReload()
+    {
+        if (_currentWeapon is IReloadable)
+            Reload((IReloadable)_currentWeapon);
+    }
+
+    private void Reload(IReloadable reloadable)
+    {
+        reloadable.Reload();            
     }
 
     private void ChangeWeapon()
