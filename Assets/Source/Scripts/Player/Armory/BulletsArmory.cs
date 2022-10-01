@@ -14,6 +14,7 @@ public class BulletsArmory
 
     public void ShotBullet()
     {
-        Value--;
+        if(Value > 0)
+            Value--;
     }
 }

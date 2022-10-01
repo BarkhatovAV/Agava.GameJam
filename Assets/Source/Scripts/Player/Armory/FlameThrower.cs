@@ -19,5 +19,4 @@ public class FlameThrower : Weapon, IWeapon
     {
         _bullets.AddBullets(value);
     }
-
 }
