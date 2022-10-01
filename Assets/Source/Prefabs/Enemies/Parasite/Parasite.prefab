@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 1472588438246007196}
   - component: {fileID: 1472588438246007199}
   - component: {fileID: 2701959427232142663}
+  - component: {fileID: -1256917077988532914}
   m_Layer: 0
   m_Name: Parasite
   m_TagString: Untagged
@@ -257,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 1472588438246007198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6013480888178711472}
@@ -296,7 +297,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -320,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed3a00bb462f2c438c4aa54c2532e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target1: {fileID: 0}
+  _clonesCount: 50
 --- !u!114 &1472588438246007194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9df9c81ad04cf40b592c0434227af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 100
+  _startValue: 50
   _delayBeforeDeath: 2
   _bloodFromHit: {fileID: 8331236833190870453}
   _bloodExplosion: {fileID: 198454593196207324, guid: 013f40a2f9e6c294ebfb06cbf7780362, type: 3}
@@ -431,6 +432,22 @@ CapsuleCollider:
   m_Height: 2.0542164
   m_Direction: 1
   m_Center: {x: 0, y: 0.96336126, z: 0}
+--- !u!54 &-1256917077988532914
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472588438246007198}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1639495298608084410
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,28 +8,19 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [SerializeField] private float _secondsBetweenSpawn;
     [Min(0)]
     [SerializeField] private int _needCount;
-    [SerializeField] private MonoBehaviour _targetBehaviour;
-    [SerializeField] private Transform _container;
+    [SerializeField] private PlayerHealth _targetBehaviour;
     [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private Transform _contaner;
 
     private ITarget _target;
     private int _spawned;
 
     public event Action<Enemy> Spawned;
 
-    private void OnValidate()
-    {
-        if (_targetBehaviour && !(_targetBehaviour is ITarget))
-        {
-            Debug.LogError(nameof(_targetBehaviour) + " needs to implement " + nameof(ITarget));
-            _targetBehaviour = null;
-        }
-    }
-
     private void Start()
     {
-        Initialize(_container);
-        _target = (ITarget)_targetBehaviour;
+        Initialize(_contaner);
+        _target = _targetBehaviour;
         StartCoroutine(Spawn());
     }
 
@@ -37,7 +28,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     {
         var delay = new WaitForSeconds(_secondsBetweenSpawn);
 
-        if (_target != null && _spawned < _needCount && TryGetRandomObject(out Enemy enemy))
+        while (_target != null && _spawned < _needCount && TryGetRandomObject(out Enemy enemy))
         {
             Initialize(enemy);
             Spawned?.Invoke(enemy);
