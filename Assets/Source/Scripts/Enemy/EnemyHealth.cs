@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyHealth : MonoBehaviour
 {
     [Min(0)]
@@ -10,9 +11,16 @@ public class EnemyHealth : MonoBehaviour
     [Min(0)]
     [SerializeField] private float _delayBeforeDeath;
 
+    private Animator _animator;
+
     public event UnityAction Ended;
 
     public float DelayBeforeDeath => _delayBeforeDeath;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void Apply(int damage)
     {
@@ -33,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator Die()
     {
         Ended?.Invoke();
+        _animator.SetBool(EnemyAnimator.Params.IsDying, true);
         yield return new WaitForSeconds(_delayBeforeDeath);
         Destroy(gameObject);
     }

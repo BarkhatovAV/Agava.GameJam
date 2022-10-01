@@ -2,16 +2,18 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class EnemyMover : MonoBehaviour
 {
     private ITarget _target;
     private NavMeshAgent _agent;
+    private Animator _animator;
 
     public float DistanceToTarget => Vector3.Distance(transform.position, _target.CurrentPosition);
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
     }
 
     public void Initialize(ITarget target)
@@ -25,6 +27,7 @@ public class EnemyMover : MonoBehaviour
     public void MoveToTarget()
     {
         _agent.isStopped = false;
+        _animator.SetBool(EnemyAnimator.Params.IsRunning, true);
 
         if (_agent.isActiveAndEnabled)
             _agent.SetDestination(_target.CurrentPosition);
@@ -33,5 +36,6 @@ public class EnemyMover : MonoBehaviour
     public void StopMoving()
     {
         _agent.isStopped = true;
+        _animator.SetBool(EnemyAnimator.Params.IsRunning, false);
     }
 }
