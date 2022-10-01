@@ -6,18 +6,24 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [Min(0)]
-    [SerializeField] private int _value;
+    [SerializeField] private int _startValue;
     [Min(0)]
     [SerializeField] private float _delayBeforeDeath;
     [SerializeField] private ParticleSystem _bloodFromHit;
     [SerializeField] private ParticleSystem _bloodExplosion;
 
     private Animator _animator;
+    private int _currentValue;
 
     public event Action Ended;
     public event Action Died;
 
     public float DelayBeforeDeath => _delayBeforeDeath;
+
+    private void OnEnable()
+    {
+        _currentValue = _startValue;
+    }
 
     private void Awake()
     {
@@ -29,19 +35,19 @@ public class EnemyHealth : MonoBehaviour
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
-        if (_value <= 0)
+        if (_currentValue <= 0)
             return;
 
-        _value -= damage;
+        _currentValue -= damage;
         _bloodFromHit.Play();
 
-        if (_value <= 0)
+        if (_currentValue <= 0)
             StartCoroutine(Die());
     }
 
     public void Kill()
     {
-        Apply(_value);
+        Apply(_currentValue);
     }
 
     private IEnumerator Die()
