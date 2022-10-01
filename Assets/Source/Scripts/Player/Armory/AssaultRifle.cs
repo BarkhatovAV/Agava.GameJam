@@ -5,10 +5,11 @@ using UnityEngine;
 public class AssaultRifle : Weapon, IReloadable
 {
     [SerializeField] private int _clipSize;
+    [SerializeField] private float _reloadTime;
 
-    private bool _isCanShoot;
     private BulletsArmory _bullets = new BulletsArmory();
-    public int ClipSize => _clipSize;
+    private int _currentClipAmount;
+    private bool _isCanShoot;
 
     public void Fire(RaycastHit hitInfo)
     {
@@ -28,14 +29,24 @@ public class AssaultRifle : Weapon, IReloadable
         StartCoroutine(OnReload());
     }
 
+    public void TakeBullets(int value)
+    {
+        _bullets.AddBullets(value);
+    }
+
+    private bool CheckNeedReload()
+    {
+        return _currentClipAmount <= 0;
+    }
+
     private IEnumerator OnReload()
     {
         yield return new WaitForSeconds(_reloadTime);
 
-        if (_amountAmmo > _clipSize)
+        if (_bullets.Value > _clipSize)
             _currentClipAmount = _clipSize;
         else
-            _currentClipAmount = _amountAmmo;
+            _currentClipAmount = _bullets.Value;
 
         _isCanShoot = true;
     }
