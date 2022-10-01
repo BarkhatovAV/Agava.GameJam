@@ -10,9 +10,9 @@ public class PlayerMovement : MonoBehaviour
             MoveDirection(Vector3.forward);
         if (Input.GetKey(KeyCode.S))
             MoveDirection(-Vector3.forward);
-        if (Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D))
             MoveDirection(Vector3.right);
-        if (Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A))
             MoveDirection(-Vector3.right);
     }
 
