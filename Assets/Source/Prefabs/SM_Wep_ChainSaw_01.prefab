@@ -98,6 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0
   _clipSize: 0
-  _isMelee: 0
   _reloadTime: 0
-  _meleeDistance: 0
+  _shotDistance: 2

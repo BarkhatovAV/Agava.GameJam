@@ -6,42 +6,49 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private int _damage;
     [SerializeField] private int _clipSize;
-    [SerializeField] private bool _isMelee;
     [SerializeField] private float _reloadTime;
-    [SerializeField] private float _meleeDistance;
+    [SerializeField] private float _shotDistance;
+    [SerializeField] private float _delayBetweenShots;
 
-    private bool _isCanShoot;
+    private bool _isCanShoot = true;
     private int _currentClipAmount;
-    private float _shotDistance = 1000;
-    
+    private int _amountAmmo;
 
-    private void Awake()
-    {
-        if (_isMelee == true)
-            _shotDistance = _meleeDistance;
-    }
-
-    public void Fire()
+    public void Fire(RaycastHit hitInfo)
     {
         if(_isCanShoot == true)
         {
-            RaycastHit hitInfo;
-            Ray ray = new Ray(transform.position, transform.forward);
+            _currentClipAmount--;
+            _amountAmmo--;
+            
+            if (hitInfo.collider.TryGetComponent(out Ground ground) && _shotDistance > hitInfo.distance)
+                print(hitInfo.distance);
 
-            if (Physics.Raycast(ray, out hitInfo, _shotDistance))
-                if (hitInfo.collider.TryGetComponent(out Ground ground))
-                    print("Shot ground");
+            if (CheckNeedReload() == true)
+                Reload();
         }
     }
 
     public void Reload()
     {
+        _isCanShoot = false;
         StartCoroutine(OnReload());
+    }
+
+    private bool CheckNeedReload()
+    {
+        return _currentClipAmount == 0;
     }
 
     private IEnumerator OnReload()
     {
         yield return new WaitForSeconds(_reloadTime);
-        _currentClipAmount = _clipSize;
+
+        if(_amountAmmo > _clipSize)
+            _currentClipAmount = _clipSize;
+        else
+            _currentClipAmount = _amountAmmo;
+
+        _isCanShoot = true;
     }
 }

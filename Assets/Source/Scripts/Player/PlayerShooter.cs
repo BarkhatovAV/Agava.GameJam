@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
@@ -22,16 +20,22 @@ public class PlayerShooter : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButton(0))
-            Fire();
+        {
+            RaycastHit hitInfo;
+            Ray ray = new Ray(transform.position, transform.forward);
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                _currentWeapon.Fire(hitInfo);
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+            ChangeWeapon();
     }
 
     private void ChangeWeapon()
     {
         _currentWeapon = _armory.ChangeWeapon();
-    }
-
-    private void Fire()
-    {
-        _currentWeapon.Fire();
     }
 }
