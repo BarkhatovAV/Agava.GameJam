@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChainSaw : Weapon
+public class ChainSaw : Weapon, IWeapon
 {
+
 }
