@@ -10,6 +10,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [SerializeField] private int _needCount;
     [SerializeField] private PlayerHealth _targetBehaviour;
     [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private Transform _contaner;
 
     private ITarget _target;
     private int _spawned;
@@ -18,7 +19,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
 
     private void Start()
     {
-        Initialize(transform);
+        Initialize(_contaner);
         _target = _targetBehaviour;
         StartCoroutine(Spawn());
     }

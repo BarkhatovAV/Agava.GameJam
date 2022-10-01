@@ -604,6 +604,10 @@ PrefabInstance:
       value: EnemiesSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 2615933482895102120, guid: 843a3a20d5cbe674eba2787786ee9486, type: 3}
+      propertyPath: _contaner
+      value: 
+      objectReference: {fileID: 7790599379728024149}
+    - target: {fileID: 2615933482895102120, guid: 843a3a20d5cbe674eba2787786ee9486, type: 3}
       propertyPath: _container
       value: 
       objectReference: {fileID: 7790599379728024149}
