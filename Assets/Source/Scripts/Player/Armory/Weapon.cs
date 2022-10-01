@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private int _damage;
-    [SerializeField] private float _reloadTime;
     [SerializeField] protected float _shotDistance;
     [SerializeField] private float _delayBetweenShots;
     [SerializeField] private ParticleSystem _particleSystem;
@@ -13,8 +12,7 @@ public abstract class Weapon : MonoBehaviour
     private void Awake()
     {
         _particleSystem.Stop();
-    }
-    
+    }   
 
     private void Update()
     {
