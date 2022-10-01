@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private int _damage;
-    
     [SerializeField] private float _reloadTime;
     [SerializeField] protected float _shotDistance;
     [SerializeField] private float _delayBetweenShots;
