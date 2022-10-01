@@ -1,15 +1,15 @@
 using System;
 using UnityEngine;
 
-public class EnemyAttacker : MonoBehaviour
+public abstract class EnemyAttacker : MonoBehaviour
 {
-    [Min(0)]
-    [SerializeField] private int _damage;
     [Min(0)]
     [SerializeField] private float _secondsBetweenAttack;
 
     private ITarget _target;
-    private float _elapsedTime;
+
+    protected float SecondsBetweenAttack => _secondsBetweenAttack;
+    protected float ElapsedTime { get; private set; }
 
     public void Initialize(ITarget target)
     {
@@ -21,15 +21,21 @@ public class EnemyAttacker : MonoBehaviour
 
     public void Attack()
     {
-        _elapsedTime += Time.deltaTime;
+        ElapsedTime += Time.deltaTime;
 
-        if (_elapsedTime > _secondsBetweenAttack)
+        if (ConditionBeforeAttack())
         {
-            _target.Apply(_damage);
+            Attack(_target);
             StopAttack();
         }
     }
 
-    public void StopAttack() 
-        => _elapsedTime = 0;
+    public void StopAttack()
+    {
+        ElapsedTime = 0;
+    }
+
+    protected abstract void Attack(ITarget target);
+
+    protected abstract bool ConditionBeforeAttack();
 }
