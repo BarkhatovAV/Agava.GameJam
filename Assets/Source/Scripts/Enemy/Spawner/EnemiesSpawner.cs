@@ -9,6 +9,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [Min(0)]
     [SerializeField] private int _needCount;
     [SerializeField] private MonoBehaviour _targetBehaviour;
+    [SerializeField] private Transform _container;
     [SerializeField] private Transform[] _spawnPoints;
 
     private ITarget _target;
@@ -27,6 +28,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
 
     private void Start()
     {
+        Initialize(_container);
         _target = (ITarget)_targetBehaviour;
         StartCoroutine(Spawn());
     }
