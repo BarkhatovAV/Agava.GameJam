@@ -6,6 +6,11 @@ public class FlameThrower : Weapon, IWeapon
 {
     private BulletsArmory _bullets = new BulletsArmory();
 
+    private void Start()
+    {
+        _bullets.AddBullets(1000);
+    }
+
     public override void Fire(RaycastHit hitInfo)
     {
         if(_bullets.Value > 0)

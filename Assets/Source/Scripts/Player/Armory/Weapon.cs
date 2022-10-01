@@ -11,8 +11,8 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Fire(RaycastHit hitInfo)
     {
-        if (hitInfo.collider.TryGetComponent(out Ground ground) && (_shotDistance > hitInfo.distance))
-            print(hitInfo.distance);
+        if (hitInfo.collider.TryGetComponent(out Enemy enemy) && (_shotDistance > hitInfo.distance))
+            enemy.Apply(_damage);
     }
 
     protected bool CheckDelay()

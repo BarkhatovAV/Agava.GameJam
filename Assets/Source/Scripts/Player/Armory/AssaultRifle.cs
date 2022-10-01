@@ -11,6 +11,11 @@ public class AssaultRifle : Weapon, IReloadable
     private int _currentClipAmount;
     private bool _isCanShoot;
 
+    private void Start()
+    {
+        _bullets.AddBullets(100);
+    }
+
     public override void Fire(RaycastHit hitInfo)
     {
         if ((_isCanShoot == true) && (CheckDelay() == true))
