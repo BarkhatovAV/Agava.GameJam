@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class WeaponArmory : MonoBehaviour
     [SerializeField] private List<Weapon> _weapons;
 
     private int _currentWeaponIndex;
+
+    public event Action<int> WeaponChanged;
 
     public Weapon ChangeWeapon()
     {
@@ -16,6 +19,7 @@ public class WeaponArmory : MonoBehaviour
         else
             _currentWeaponIndex++;
 
+        WeaponChanged?.Invoke(_currentWeaponIndex);
         DisplayWeapon();
 
         return _weapons[_currentWeaponIndex];

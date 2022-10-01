@@ -9,6 +9,11 @@ public class PlayerHealthView : MonoBehaviour
     [SerializeField] private Image _filledImage;
     [SerializeField] private PlayerHealth _playerHealth;
 
+    private void OnValidate()
+    {
+        _playerHealth = FindObjectOfType<PlayerHealth>();
+    }
+
     private void OnEnable()
     {
         _playerHealth.HealthChanged += OnHealthChanged;
