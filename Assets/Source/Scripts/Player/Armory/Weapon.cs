@@ -15,6 +15,10 @@ public abstract class Weapon : MonoBehaviour
     private int _currentClipAmount;
     private int _amountAmmo;
 
+    private void Awake()
+    {
+        _particleSystem.Stop();
+    }
 
     public void Fire(RaycastHit hitInfo)
     {
@@ -28,6 +32,14 @@ public abstract class Weapon : MonoBehaviour
             if (CheckNeedReload() == true)
                 Reload();
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+            _particleSystem.Play();
+        if (Input.GetMouseButtonUp(0))
+            _particleSystem.Stop();
     }
 
     public void Reload()
