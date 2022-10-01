@@ -358,6 +358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 100
   _delayBeforeDeath: 5
+  _bloodFromHit: {fileID: 198395405556058082, guid: 6f5c1fefc5a1904479713463a42c8402, type: 3}
+  _bloodExplosion: {fileID: 198454593196207324, guid: 013f40a2f9e6c294ebfb06cbf7780362, type: 3}
 --- !u!114 &1472588438246007199
 MonoBehaviour:
   m_ObjectHideFlags: 0

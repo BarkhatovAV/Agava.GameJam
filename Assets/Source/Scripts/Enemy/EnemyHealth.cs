@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int _value;
     [Min(0)]
     [SerializeField] private float _delayBeforeDeath;
+    [SerializeField] private ParticleSystem _bloodFromHit;
+    [SerializeField] private ParticleSystem _bloodExplosion;
 
     private Animator _animator;
 
@@ -27,7 +29,11 @@ public class EnemyHealth : MonoBehaviour
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
+        if (_value <= 0)
+            return;
+
         _value -= damage;
+        _bloodFromHit.Play();
 
         if (_value <= 0)
             StartCoroutine(Die());
@@ -43,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
         Ended?.Invoke();
         _animator.SetBool(EnemyAnimator.Params.IsDying, true);
         yield return new WaitForSeconds(_delayBeforeDeath);
+        Instantiate(_bloodExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
