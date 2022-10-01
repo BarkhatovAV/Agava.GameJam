@@ -8,8 +8,9 @@ public class MutantAttacker : EnemyAttacker
     private EnemyHealth _health;
     private bool _attacked;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _health = GetComponent<EnemyHealth>();
     }
 

@@ -49,7 +49,7 @@ public class EnemyHealth : MonoBehaviour
         Ended?.Invoke();
         _animator.SetBool(EnemyAnimator.Params.IsDying, true);
         yield return new WaitForSeconds(_delayBeforeDeath);
-        Instantiate(_bloodExplosion, transform.position, Quaternion.identity);
+        Instantiate(_bloodExplosion, transform.position, _bloodExplosion.transform.rotation);
         Destroy(gameObject);
     }
 }

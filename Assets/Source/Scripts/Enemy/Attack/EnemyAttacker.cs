@@ -13,7 +13,7 @@ public abstract class EnemyAttacker : MonoBehaviour
     protected float SecondsBetweenAttack => _secondsBetweenAttack;
     protected float ElapsedTime { get; private set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _animator = GetComponent<Animator>();
     }
