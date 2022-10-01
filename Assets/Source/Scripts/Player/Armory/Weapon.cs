@@ -9,17 +9,18 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private float _reloadTime;
     [SerializeField] private float _shotDistance;
     [SerializeField] private float _delayBetweenShots;
+    [SerializeField] private ParticleSystem _particleSystem;
 
     private bool _isCanShoot = true;
     private int _currentClipAmount;
     private int _amountAmmo;
 
+
     public void Fire(RaycastHit hitInfo)
     {
         if(_isCanShoot == true)
         {
-            _currentClipAmount--;
-            _amountAmmo--;
+            OnFire();
             
             if (hitInfo.collider.TryGetComponent(out Ground ground) && _shotDistance > hitInfo.distance)
                 print(hitInfo.distance);
@@ -33,6 +34,12 @@ public abstract class Weapon : MonoBehaviour
     {
         _isCanShoot = false;
         StartCoroutine(OnReload());
+    }
+
+    private void OnFire()
+    {
+        _currentClipAmount--;
+        _amountAmmo--;
     }
 
     private bool CheckNeedReload()
