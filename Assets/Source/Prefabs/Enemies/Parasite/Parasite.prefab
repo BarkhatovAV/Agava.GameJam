@@ -241,8 +241,8 @@ GameObject:
   - component: {fileID: 1472588438246007197}
   - component: {fileID: 1472588438246007196}
   - component: {fileID: 1472588438246007199}
-  - component: {fileID: 2701959427232142663}
   - component: {fileID: -1256917077988532914}
+  - component: {fileID: 33295128675093715}
   m_Layer: 6
   m_Name: Parasite
   m_TagString: Untagged
@@ -436,20 +436,6 @@ MonoBehaviour:
       Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
---- !u!136 &2701959427232142663
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472588438246007198}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.0542164
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.96336126, z: 0}
 --- !u!54 &-1256917077988532914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -466,6 +452,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &33295128675093715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472588438246007198}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47948423, y: 2.0219746, z: 0.39100963}
+  m_Center: {x: 0.0020419806, y: 1.0164573, z: -0.005919315}
 --- !u!1 &1639495298608084410
 GameObject:
   m_ObjectHideFlags: 0

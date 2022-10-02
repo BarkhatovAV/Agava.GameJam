@@ -35705,8 +35705,8 @@ GameObject:
   - component: {fileID: 9050181154773235013}
   - component: {fileID: 9050181154773235012}
   - component: {fileID: 9050181154773235067}
-  - component: {fileID: 4039005525472316704}
   - component: {fileID: 8186880915544249507}
+  - component: {fileID: 7709435983892170545}
   m_Layer: 6
   m_Name: Mutant
   m_TagString: Untagged
@@ -35898,20 +35898,6 @@ MonoBehaviour:
       Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
---- !u!136 &4039005525472316704
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9050181154773235066}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.0303564
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.8967457, z: 0}
 --- !u!54 &8186880915544249507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35928,6 +35914,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7709435983892170545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9050181154773235066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5199305, y: 1.7600955, z: 0.36076504}
+  m_Center: {x: 0.0042467117, y: 0.88632184, z: 0.010777183}
 --- !u!1 &9105392799310714401
 GameObject:
   m_ObjectHideFlags: 0

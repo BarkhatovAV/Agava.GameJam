@@ -30474,8 +30474,8 @@ GameObject:
   - component: {fileID: 4960936939052301170}
   - component: {fileID: 4960936939052301171}
   - component: {fileID: 4960936939052301168}
-  - component: {fileID: 5264973449648222623}
   - component: {fileID: 6130061603170510931}
+  - component: {fileID: 8486434368182482403}
   m_Layer: 6
   m_Name: Zombiegirl
   m_TagString: Untagged
@@ -30674,20 +30674,6 @@ MonoBehaviour:
       Version: 1.7.2
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
---- !u!136 &5264973449648222623
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4960936939052301169}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.039995
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9795705, z: 0}
 --- !u!54 &6130061603170510931
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30704,6 +30690,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8486434368182482403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960936939052301169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.416654, y: 2.0207174, z: 0.33849478}
+  m_Center: {x: 0.017854214, y: 0.9981233, z: -0.03312876}
 --- !u!1 &5077754656196030293
 GameObject:
   m_ObjectHideFlags: 0
