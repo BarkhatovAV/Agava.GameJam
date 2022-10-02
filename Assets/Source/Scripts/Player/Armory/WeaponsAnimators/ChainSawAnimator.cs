@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class ChainSawAnimator : WeaponAnimator
+public class ChainSawEffector : WeaponEffector
 {
     private Animator _animator;
     private const string c_ShakeSaw = "ShakeSaw";

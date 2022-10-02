@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MachineGunAnimator : WeaponAnimator
+public class MachineGunEffector : WeaponEffector
 {
     [SerializeField] private float _changeRotateSpeed;
     [SerializeField] private float _changeColorSpeed;

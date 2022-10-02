@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class WeaponAnimator : MonoBehaviour
+public abstract class WeaponEffector : MonoBehaviour
 {
     private void Update()
     {
