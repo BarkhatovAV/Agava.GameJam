@@ -25523,6 +25523,7 @@ GameObject:
   - component: {fileID: 4960936939052301171}
   - component: {fileID: 4960936939052301168}
   - component: {fileID: 5264973449648222623}
+  - component: {fileID: 6130061603170510931}
   m_Layer: 0
   m_Name: Zombiegirl
   m_TagString: Untagged
@@ -25539,7 +25540,7 @@ Transform:
   m_GameObject: {fileID: 4960936939052301169}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 271143675615854943}
@@ -25581,7 +25582,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -25605,7 +25606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed3a00bb462f2c438c4aa54c2532e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target1: {fileID: 0}
+  _clonesCount: 30
 --- !u!114 &4960936939052301181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25646,7 +25647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9df9c81ad04cf40b592c0434227af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 100
+  _startValue: 80
   _delayBeforeDeath: 2
   _bloodFromHit: {fileID: 1785882209525559352}
   _bloodExplosion: {fileID: 198771926522987320, guid: 95f8e85235d81624e80a182d051cc130, type: 3}
@@ -25718,6 +25719,22 @@ CapsuleCollider:
   m_Height: 2.039995
   m_Direction: 1
   m_Center: {x: 0, y: 0.9795705, z: 0}
+--- !u!54 &6130061603170510931
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960936939052301169}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5077754656196030293
 GameObject:
   m_ObjectHideFlags: 0

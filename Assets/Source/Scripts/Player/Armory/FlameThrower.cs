@@ -13,7 +13,7 @@ public class FlameThrower : Weapon, IWeapon
 
     private void Start()
     {
-        _bullets.AddBullets(1000);
+        _bullets.AddBullets(100000);
     }
 
     private void Update()
