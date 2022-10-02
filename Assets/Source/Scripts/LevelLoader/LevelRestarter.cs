@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class LevelRestarter
+public  class LevelRestarter : MonoBehaviour 
 {
-    public static void Restart()
+    public  void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
