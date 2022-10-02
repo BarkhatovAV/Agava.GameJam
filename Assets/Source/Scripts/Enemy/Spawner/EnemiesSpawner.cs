@@ -7,7 +7,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [Min(0)]
     [SerializeField] private float _secondsBetweenSpawn;
     [Min(0)]
-    [SerializeField] private int _needCount;
+    [SerializeField] private int _maximumCount;
     [Min(0)]
     [SerializeField] private int _countBetweenWaves;
     [Min(0)]
@@ -17,6 +17,8 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [SerializeField] private Transform _contaner;
 
     private int _spawned;
+
+    public int MaximumCount => _maximumCount;
 
     public event Action<Enemy> Spawned;
 
@@ -31,7 +33,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
         var delayBetweenSpawn = new WaitForSeconds(_secondsBetweenSpawn);
         var delayBetweenWave = new WaitForSeconds(_secondsBetweenWaves);
 
-        while (_target != null && _spawned < _needCount && TryGetRandomObject(out Enemy enemy))
+        while (_target != null && _spawned < _maximumCount && TryGetRandomObject(out Enemy enemy))
         {
             Initialize(enemy);
             Spawned?.Invoke(enemy);
