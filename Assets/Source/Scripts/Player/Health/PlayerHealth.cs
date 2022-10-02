@@ -16,6 +16,12 @@ public class PlayerHealth : MonoBehaviour, ITarget
     public event Action Died;
     public event Action HealthCriticallyReduced;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+            Died?.Invoke();
+    }
+
     public void Apply(int damage)
     {
         if (damage < 0)

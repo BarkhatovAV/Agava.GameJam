@@ -34,12 +34,6 @@ public class PlayerKiller : MonoBehaviour
     private void OnDisable()
     {
         _health.Died -= OnDied;
-
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.M))
-            OnDied();
     }
 
     private void OnDied()
@@ -49,9 +43,7 @@ public class PlayerKiller : MonoBehaviour
         _mover.enabled = false;
         Time.timeScale = _timeScaleOnDie;
 
-
         StartCoroutine(OnFall());
-        print("Diyng");
     }
 
     private void Fall()
