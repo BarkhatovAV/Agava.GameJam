@@ -13,13 +13,13 @@ public class FlameThrowerEffector : WeaponEffector
         _particleFlame.Stop();
     }
 
-    protected override void StartAnimation()
+    protected override void StartPlayEffects()
     {
         _particleFlame.Play();
         _audioEffect.Play();
     }
 
-    protected override void StopAnimation()
+    protected override void StopPlayEffects()
     {
         _particleFlame.Stop();
         _audioEffect.Stop();

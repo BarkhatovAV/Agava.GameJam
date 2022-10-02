@@ -5,11 +5,11 @@ public abstract class WeaponEffector : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            StartAnimation();
+            StartPlayEffects();
         if (Input.GetMouseButtonUp(0))
-            StopAnimation();
+            StopPlayEffects();
     }
 
-    protected abstract void StopAnimation();
-    protected abstract void StartAnimation();
+    protected abstract void StopPlayEffects();
+    protected abstract void StartPlayEffects();
 }

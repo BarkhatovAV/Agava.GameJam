@@ -24,13 +24,13 @@ public class MachineGunEffector : WeaponEffector
         _material.color = Color.white;
     }
 
-    protected override void StartAnimation()
+    protected override void StartPlayEffects()
     {
         ChangeBarrelRotateSpeed(_maxBarrelSpeed);
         ChangeBarrelColor(Color.red);
     }
 
-    protected override void StopAnimation()
+    protected override void StopPlayEffects()
     {
         ChangeBarrelRotateSpeed(0);
         ChangeBarrelColor(Color.white);
