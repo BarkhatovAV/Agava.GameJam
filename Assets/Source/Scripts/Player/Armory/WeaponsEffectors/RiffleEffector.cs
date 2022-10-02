@@ -22,6 +22,7 @@ public class RiffleEffector : WeaponEffector
     private void OnEnable()
     {
         StopPlayEffects();
+        ReturnOnBaseTransform();
         _reloadable.ReloadStarted += OnReloadStarted;
         _reloadable.ReloadFinished += OnReloadFinished;
     }

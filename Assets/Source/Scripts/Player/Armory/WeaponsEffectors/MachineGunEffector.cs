@@ -30,6 +30,7 @@ public class MachineGunEffector : WeaponEffector
 
     private void OnEnable()
     {
+        ReturnOnBaseTransform();
         _animator.speed = 0;
         _material.color = Color.white;
         StopPlayParticles();

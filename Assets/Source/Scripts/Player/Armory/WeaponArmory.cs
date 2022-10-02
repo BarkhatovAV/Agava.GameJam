@@ -6,7 +6,7 @@ public class WeaponArmory : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _weapons;
 
-    private int _currentWeaponIndex;
+    private int _currentWeaponIndex = 1;
 
     public event Action<int> WeaponChanged;
 

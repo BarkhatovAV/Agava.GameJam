@@ -56,6 +56,11 @@ public abstract class WeaponEffector : MonoBehaviour
             StopCoroutine(_coroutineShotRecoil);
     }
 
+    protected void ReturnOnBaseTransform()
+    {
+        transform.localRotation = _baseLocalRotation;
+    }
+
     private void RecoilMove(Vector3 target)
     {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, _recoilSpeed * Time.deltaTime);
