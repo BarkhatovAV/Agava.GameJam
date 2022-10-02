@@ -37,7 +37,11 @@ public class PlayerHealth : MonoBehaviour, ITarget
 
         if (_value <= 0)
         {
-            Died?.Invoke();
+            if(this.enabled)
+            {
+                Died?.Invoke();
+            }
+
             this.enabled = false;
         }
 
