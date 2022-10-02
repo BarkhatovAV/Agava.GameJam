@@ -4,8 +4,15 @@ using BehaviorDesigner.Runtime.Tasks;
 public class EstrangementFromTarget : Conditional
 {
     public SharedFloat TargetDistance;
-    public SharedEnemyMover EnemyMover;
+    public SharedEnemyVision EnemyVision;
 
     public override TaskStatus OnUpdate()
-        => EnemyMover.Value.DistanceToTarget > TargetDistance.Value ? TaskStatus.Success : TaskStatus.Failure;
+    {
+        return CanMove() ? TaskStatus.Success : TaskStatus.Failure;
+    }
+
+    private bool CanMove()
+    {
+        return EnemyVision.Value.DistanceToTarget > TargetDistance.Value;
+    }
 }
