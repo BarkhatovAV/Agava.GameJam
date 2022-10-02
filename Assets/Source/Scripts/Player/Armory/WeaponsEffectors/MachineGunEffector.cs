@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,12 +16,16 @@ public class MachineGunEffector : WeaponEffector
     private AudioSource _audioEffect;
     private Coroutine _coroutineRotate;
     private Coroutine _coroutinColorChange;
+    private IReloadable _reloadable;
+    private bool _isEffectsEnable;
 
 
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
         _audioEffect = GetComponentInChildren<AudioSource>();
+        _reloadable = GetComponent<IReloadable>();
+        _isEffectsEnable = true;
     }
 
     private void OnEnable()
@@ -28,14 +33,25 @@ public class MachineGunEffector : WeaponEffector
         _animator.speed = 0;
         _material.color = Color.white;
         StopPlayParticles();
+        _reloadable.ReloadStarted += OnReloadStarted;
+        _reloadable.ReloadFinished += OnReloadFinished;
+    }
+
+    private void OnDisable()
+    {
+        _reloadable.ReloadStarted -= OnReloadStarted;
+        _reloadable.ReloadFinished -= OnReloadFinished;
     }
 
     protected override void StartPlayEffects()
     {
-        ChangeBarrelRotateSpeed(_maxBarrelSpeed);
-        ChangeBarrelColor(Color.red);
-        _audioEffect.Play();
-        PlayParticles();
+        if( _isEffectsEnable == true)
+        {
+            ChangeBarrelRotateSpeed(_maxBarrelSpeed);
+            ChangeBarrelColor(Color.red);
+            _audioEffect.Play();
+            PlayParticles();
+        }
     }
 
     protected override void StopPlayEffects()
@@ -47,12 +63,25 @@ public class MachineGunEffector : WeaponEffector
 
     }
 
+    private void OnReloadStarted(float reloadTime)
+    {
+        StopPlayEffects();
+        Reload(reloadTime);
+        _isEffectsEnable = false;
+    }
+
+    private void OnReloadFinished()
+    {
+        _isEffectsEnable = true;
+    }
+
+
     private void ChangeBarrelColor(Color targetColor)
     {
         if (_coroutinColorChange != null)
             StopCoroutine(_coroutinColorChange);
 
-        _coroutineRotate = StartCoroutine(OnBarrelColorChange(targetColor));
+        _coroutinColorChange = StartCoroutine(OnBarrelColorChange(targetColor));
     }
 
     private void ChangeBarrelRotateSpeed(float targetSpeed)

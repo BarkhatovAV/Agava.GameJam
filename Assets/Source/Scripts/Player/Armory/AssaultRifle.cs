@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,15 +12,21 @@ public class AssaultRifle : Weapon, IReloadable
     private int _currentClipAmount;
     private bool _isCanShoot;
 
+    public event Action<float> ReloadStarted;
+    public event Action ReloadFinished;
+
     private void Start()
     {
-        _bullets.AddBullets(100000);
+        _bullets.AddBullets(1000000000);
+        _currentClipAmount = _clipSize;
+        _isCanShoot = true;
     }
 
     public override void Fire(RaycastHit hitInfo)
     {
         if ((_isCanShoot == true) && (CheckDelay() == true))
         {
+            _currentClipAmount--;
             base.Fire(hitInfo);
 
             if (CheckNeedReload() == true)
@@ -31,6 +38,7 @@ public class AssaultRifle : Weapon, IReloadable
     {
         _isCanShoot = false;
         StartCoroutine(OnReload());
+        ReloadStarted?.Invoke(_reloadTime);
     }
 
     public void TakeBullets(int value)
@@ -53,5 +61,6 @@ public class AssaultRifle : Weapon, IReloadable
             _currentClipAmount = _bullets.Value;
 
         _isCanShoot = true;
+        ReloadFinished?.Invoke();
     }
 }
