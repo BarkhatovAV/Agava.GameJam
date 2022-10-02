@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 1472588438246007193}
   - component: {fileID: 1472588438246007192}
   - component: {fileID: 1472588438246007195}
+  - component: {fileID: 6139506080482404967}
   - component: {fileID: 1472588438246007194}
   - component: {fileID: 1472588438246007197}
   - component: {fileID: 1472588438246007196}
@@ -322,6 +323,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clonesCount: 50
+--- !u!114 &6139506080482404967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472588438246007198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a19c82243b9fd40b94ebb3a7a3675f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1472588438246007194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,26 +406,27 @@ MonoBehaviour:
       startIndex: 
       variableStartIndex: 
       JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(267.2682,7.84083557)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-2.73181152,117.840836)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(4.9792223,111.1092)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-218.025833,136.018936)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"EstrangementFromTarget","NodeData":{"Offset":"(-229.914566,165.7538)"},"ID":4,"Name":"Estrangement
-        From Target","Instant":true,"SharedFloatTargetDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4},"SharedEnemyMoverEnemyMover":{"Type":"SharedEnemyMover","Name":"_mover","IsShared":true,"EnemyMovermValue":0}},{"Type":"AttackStopping","NodeData":{"Offset":"(-54.5413322,159.8789)"},"ID":5,"Name":"Attack
+        From Target","Instant":true,"SharedFloatTargetDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4},"SharedEnemyVisionEnemyVision":{"Type":"SharedEnemyVision","Name":"_vision","IsShared":true,"EnemyVisionmValue":0}},{"Type":"AttackStopping","NodeData":{"Offset":"(-54.5413322,159.8789)"},"ID":5,"Name":"Attack
         Stopping","Instant":true,"SharedEnemyAttackerEnemyAttacker":{"Type":"SharedEnemyAttacker","Name":"_attacker","IsShared":true,"EnemyAttackermValue":1}},{"Type":"MovementToTarget","NodeData":{"Offset":"(110.405411,164.111771)"},"ID":6,"Name":"Movement
         To Target","Instant":true,"SharedEnemyMoverEnemyMover":{"Type":"SharedEnemyMover","Name":"_mover","IsShared":true,"EnemyMovermValue":2}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(208.421021,143.1579)"},"ID":7,"Name":"Sequence","Instant":true,"AbortTypeabortType":"Both","Children":[{"Type":"ApproximationToTarget","NodeData":{"Offset":"(-130.653778,158.113953)"},"ID":8,"Name":"Approximation
-        To Target","Instant":true,"SharedFloatTargetDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4},"SharedEnemyMoverEnemyMover":{"Type":"SharedEnemyMover","Name":"_mover","IsShared":true,"EnemyMovermValue":3}},{"Type":"MovementStopping","NodeData":{"Offset":"(49.2675476,161.730774)"},"ID":9,"Name":"Movement
+        To Target","Instant":true,"SharedFloatTargetDistance":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4},"SharedEnemyVisionEnemyVision":{"Type":"SharedEnemyVision","Name":"_vision","IsShared":true,"EnemyVisionmValue":3}},{"Type":"MovementStopping","NodeData":{"Offset":"(49.2675476,161.730774)"},"ID":9,"Name":"Movement
         Stopping","Instant":true,"SharedEnemyMoverEnemyMover":{"Type":"SharedEnemyMover","Name":"_mover","IsShared":true,"EnemyMovermValue":4}},{"Type":"AttackOnTarget","NodeData":{"Offset":"(208.5267,161.730774)"},"ID":10,"Name":"Attack
-        On Target","Instant":true,"SharedEnemyAttackerEnemyAttacker":{"Type":"SharedEnemyAttacker","Name":"_attacker","IsShared":true,"EnemyAttackermValue":5}}]}]}]},"Variables":[{"Type":"SharedEnemyMover","Name":"_mover","IsShared":true,"EnemyMovermValue":6},{"Type":"SharedEnemyAttacker","Name":"_attacker","IsShared":true,"EnemyAttackermValue":7}]}'
+        On Target","Instant":true,"SharedEnemyAttackerEnemyAttacker":{"Type":"SharedEnemyAttacker","Name":"_attacker","IsShared":true,"EnemyAttackermValue":5}}]}]}]},"Variables":[{"Type":"SharedEnemyMover","Name":"_mover","IsShared":true,"EnemyMovermValue":6},{"Type":"SharedEnemyAttacker","Name":"_attacker","IsShared":true,"EnemyAttackermValue":7},{"Type":"SharedEnemyVision","Name":"_vision","IsShared":true,"EnemyVisionmValue":8}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
         startIndex: 
         dataPosition: 
         unityObjects:
+        - {fileID: 6139506080482404967}
+        - {fileID: 1472588438246007194}
+        - {fileID: 1472588438246007197}
+        - {fileID: 6139506080482404967}
         - {fileID: 1472588438246007197}
         - {fileID: 1472588438246007194}
         - {fileID: 1472588438246007197}
-        - {fileID: 1472588438246007197}
-        - {fileID: 1472588438246007197}
         - {fileID: 1472588438246007194}
-        - {fileID: 1472588438246007197}
-        - {fileID: 1472588438246007194}
+        - {fileID: 6139506080482404967}
         byteData: 
         byteDataArray: 
       Version: 1.7.2
