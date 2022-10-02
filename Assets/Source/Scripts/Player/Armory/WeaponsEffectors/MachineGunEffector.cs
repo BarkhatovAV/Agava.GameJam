@@ -9,6 +9,7 @@ public class MachineGunEffector : WeaponEffector
     [SerializeField] private float _maxBarrelSpeed;
     [SerializeField] private Material _material;
     [SerializeField] private ParticleSystem _particleBulletsShells;
+    [SerializeField] private ParticleSystem _particleFire;
 
     private Animator _animator;
     private AudioSource _audioEffect;
@@ -26,7 +27,7 @@ public class MachineGunEffector : WeaponEffector
     {
         _animator.speed = 0;
         _material.color = Color.white;
-        _particleBulletsShells.Stop();
+        StopPlayParticles();
     }
 
     protected override void StartPlayEffects()
@@ -34,7 +35,7 @@ public class MachineGunEffector : WeaponEffector
         ChangeBarrelRotateSpeed(_maxBarrelSpeed);
         ChangeBarrelColor(Color.red);
         _audioEffect.Play();
-        _particleBulletsShells.Play();
+        PlayParticles();
     }
 
     protected override void StopPlayEffects()
@@ -42,7 +43,8 @@ public class MachineGunEffector : WeaponEffector
         ChangeBarrelRotateSpeed(0);
         ChangeBarrelColor(Color.white);
         _audioEffect.Stop();
-        _particleBulletsShells.Stop();
+        StopPlayParticles();
+
     }
 
     private void ChangeBarrelColor(Color targetColor)
@@ -59,6 +61,18 @@ public class MachineGunEffector : WeaponEffector
             StopCoroutine(_coroutineRotate);
 
         _coroutineRotate = StartCoroutine(OnRotateBarrel(targetSpeed));
+    }
+
+    private void PlayParticles()
+    {
+        _particleBulletsShells.Play();
+        _particleFire.Play();
+    }
+
+    private void StopPlayParticles()
+    {
+        _particleBulletsShells.Stop();
+        _particleFire.Stop();
     }
 
     private IEnumerator OnRotateBarrel(float targetSpeed)
