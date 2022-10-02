@@ -17,14 +17,16 @@ public class AssaultRifle : Weapon, IReloadable
 
     private void Start()
     {
-        _bullets.AddBullets(100000);
+        _bullets.AddBullets(1000000000);
+        _currentClipAmount = _clipSize;
+        _isCanShoot = true;
     }
 
     public override void Fire(RaycastHit hitInfo)
     {
-        print(_currentClipAmount);
         if ((_isCanShoot == true) && (CheckDelay() == true))
         {
+            _currentClipAmount--;
             base.Fire(hitInfo);
 
             if (CheckNeedReload() == true)
@@ -36,6 +38,7 @@ public class AssaultRifle : Weapon, IReloadable
     {
         _isCanShoot = false;
         StartCoroutine(OnReload());
+        ReloadStarted?.Invoke(_reloadTime);
     }
 
     public void TakeBullets(int value)

@@ -4,7 +4,6 @@ using UnityEngine;
 public abstract class WeaponEffector : MonoBehaviour
 {
     private Quaternion  _baseLocalRotation;
-    private float _timeOnAnimateWeaponMove = 0.5f;
     private float _targetAngelRotationX = 35;
     private Quaternion _targetRotationX;
 
@@ -12,6 +11,11 @@ public abstract class WeaponEffector : MonoBehaviour
     {
         _baseLocalRotation = transform.localRotation;
         _targetRotationX = Quaternion.Euler(_targetAngelRotationX, transform.localRotation.y, transform.localRotation.z);
+    }
+
+    private void OnEnable()
+    {
+        StopPlayEffects();
     }
 
     private void Update()
@@ -32,7 +36,6 @@ public abstract class WeaponEffector : MonoBehaviour
 
     private IEnumerator OnReload(float reloadTime)
     {
-        print(Time.time);
         float coroutineDelay = 0.01f;
         float rotationStep = (_targetAngelRotationX - _baseLocalRotation.x) * coroutineDelay;
 
@@ -43,12 +46,10 @@ public abstract class WeaponEffector : MonoBehaviour
 
             yield return new WaitForSeconds(coroutineDelay);
         }
-        print(Time.time);
 
         float waitingTime = reloadTime - rotationStep * coroutineDelay * 2;
 
         yield return new WaitForSeconds(waitingTime);
-        print(Time.time);
 
         while (transform.localRotation != _baseLocalRotation)
         {
@@ -56,6 +57,5 @@ public abstract class WeaponEffector : MonoBehaviour
 
             yield return new WaitForSeconds(coroutineDelay);
         }
-        print(Time.time);
     }
 }

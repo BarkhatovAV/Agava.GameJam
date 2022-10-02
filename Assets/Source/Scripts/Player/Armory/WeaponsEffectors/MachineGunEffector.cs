@@ -33,21 +33,14 @@ public class MachineGunEffector : WeaponEffector
         _animator.speed = 0;
         _material.color = Color.white;
         StopPlayParticles();
-
-        if (_reloadable != null)
-        {
-            _reloadable.ReloadStarted += OnReloadStarted;
-            _reloadable.ReloadFinished += OnReloadFinished;
-        }
+        _reloadable.ReloadStarted += OnReloadStarted;
+        _reloadable.ReloadFinished += OnReloadFinished;
     }
 
     private void OnDisable()
     {
-        if (_reloadable != null)
-        {
-            _reloadable.ReloadStarted -= OnReloadStarted;
-            _reloadable.ReloadFinished -= OnReloadFinished;
-        }
+        _reloadable.ReloadStarted -= OnReloadStarted;
+        _reloadable.ReloadFinished -= OnReloadFinished;
     }
 
     protected override void StartPlayEffects()
@@ -115,8 +108,6 @@ public class MachineGunEffector : WeaponEffector
     {
         while(_animator.speed != targetSpeed)
         {
-            print(_animator.speed);
-            print(targetSpeed);
             _animator.speed = Mathf.Lerp(_animator.speed, targetSpeed, _changeRotateSpeed * Time.deltaTime);
             yield return new WaitForSeconds(0.01f);
         }
