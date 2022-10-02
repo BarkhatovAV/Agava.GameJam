@@ -8,7 +8,7 @@ public class UIPlayerKiller : MonoBehaviour
 {
     [SerializeField] private Image _imageTopEye;
     [SerializeField] private Image _imageBottomEye;
-    [SerializeField] private Image _imageTarget;
+    [SerializeField] private Image _imageWasted;
     [SerializeField] private PlayerHealth _health;
     [SerializeField] private float _closeEyeSpeed;
 
@@ -30,17 +30,22 @@ public class UIPlayerKiller : MonoBehaviour
 
     private void OnDied()
     {
-        StartCoroutine(OnDiyng());
+        StartCoroutine(OnCloseEye());
+        StartCoroutine(OnWastedIncrease());
     }
 
     private void CloseEye(Image eye)
     {
-        eye.rectTransform.position = Vector3.MoveTowards(eye.rectTransform.position, _imageTarget.rectTransform.position, _closeEyeSpeed * Time.deltaTime);
+        eye.rectTransform.position = Vector3.MoveTowards(eye.rectTransform.position, _imageWasted.rectTransform.position, _closeEyeSpeed * Time.deltaTime);
     }
 
-    private IEnumerator OnDiyng()
+    private void WastedIncrease(float value)
     {
-        print("Start");
+        _imageWasted.rectTransform.sizeDelta += Vector2.one * value;
+    }
+
+    private IEnumerator OnCloseEye()
+    {
         while(_imageBottomEye.rectTransform.position != Vector3.zero)
         {
             CloseEye(_imageTopEye);
@@ -48,7 +53,18 @@ public class UIPlayerKiller : MonoBehaviour
 
             yield return new WaitForSeconds(0.01f);  
         }
+    }
 
-        print("Finish");
+    private IEnumerator OnWastedIncrease()
+    {
+        yield return new WaitForSeconds(3);
+
+        while(_imageWasted.rectTransform.sizeDelta.x < 400)
+        {
+            WastedIncrease(1);
+
+            yield return new WaitForSeconds(0.01f);
+        } 
+            
     }
 }
