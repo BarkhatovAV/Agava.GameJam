@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _armory: {fileID: 0}
-  _startWeapon: {fileID: -2095151660094844009, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
+  _startWeapon: {fileID: 8086966081206323572}
 --- !u!114 &463072382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074116973428324, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4557533270495408, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_RootOrder
@@ -1239,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1900586067242068, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4023067158591890, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
       propertyPath: m_RootOrder
