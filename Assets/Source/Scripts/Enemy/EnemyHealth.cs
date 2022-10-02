@@ -1,21 +1,29 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 public class EnemyHealth : MonoBehaviour
 {
     [Min(0)]
-    [SerializeField] private int _value;
+    [SerializeField] private int _startValue;
     [Min(0)]
     [SerializeField] private float _delayBeforeDeath;
+    [SerializeField] private ParticleSystem _bloodFromHit;
+    [SerializeField] private ParticleSystem _bloodExplosion;
 
     private Animator _animator;
+    private int _currentValue;
 
-    public event UnityAction Ended;
+    public event Action Ended;
+    public event Action Died;
 
     public float DelayBeforeDeath => _delayBeforeDeath;
+
+    private void OnEnable()
+    {
+        _currentValue = _startValue;
+    }
 
     private void Awake()
     {
@@ -27,15 +35,19 @@ public class EnemyHealth : MonoBehaviour
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
-        _value -= damage;
+        if (_currentValue <= 0)
+            return;
 
-        if (_value <= 0)
+        _currentValue -= damage;
+        _bloodFromHit.Play();
+
+        if (_currentValue <= 0)
             StartCoroutine(Die());
     }
 
     public void Kill()
     {
-        Apply(_value);
+        Apply(_currentValue);
     }
 
     private IEnumerator Die()
@@ -43,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
         Ended?.Invoke();
         _animator.SetBool(EnemyAnimator.Params.IsDying, true);
         yield return new WaitForSeconds(_delayBeforeDeath);
-        Destroy(gameObject);
+        Instantiate(_bloodExplosion, transform.position, _bloodExplosion.transform.rotation);
+        Died?.Invoke();
     }
 }

@@ -1,79 +1,28 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private int _damage;
-    [SerializeField] private int _clipSize;
-    [SerializeField] private float _reloadTime;
-    [SerializeField] private float _shotDistance;
+    [SerializeField] protected int _damage;
+    [SerializeField] protected float _shotDistance;
     [SerializeField] private float _delayBetweenShots;
-    [SerializeField] private ParticleSystem _particleSystem;
 
-    private bool _isCanShoot = true;
-    private int _currentClipAmount;
-    private int _amountAmmo;
+    protected float _lastTimeShot;
 
-    private void Awake()
+    public virtual void Fire(RaycastHit hitInfo)
     {
-        _particleSystem.Stop();
-    }
-    
-    public void AddAmmo(int value)
-    {
-        _amountAmmo += value;
+        if (hitInfo.collider.TryGetComponent(out Enemy enemy) && (_shotDistance > hitInfo.distance))
+            enemy.Apply(_damage);
     }
 
-    public void Fire(RaycastHit hitInfo)
+    protected bool CheckDelay()
     {
-        if(_isCanShoot == true)
+        if(_lastTimeShot + _delayBetweenShots < Time.time)
         {
-            OnFire();
-            
-            if (hitInfo.collider.TryGetComponent(out Ground ground) && _shotDistance > hitInfo.distance)
-                print(hitInfo.distance);
-
-            if (CheckNeedReload() == true)
-                Reload();
+            _lastTimeShot = Time.time;
+            return true;
         }
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-            _particleSystem.Play();
-        if (Input.GetMouseButtonUp(0))
-            _particleSystem.Stop();
-    }
-
-    public void Reload()
-    {
-        _isCanShoot = false;
-        StartCoroutine(OnReload());
-    }
-
-    private void OnFire()
-    {
-        _currentClipAmount--;
-        _amountAmmo--;
-    }
-
-    private bool CheckNeedReload()
-    {
-        return _currentClipAmount == 0;
-    }
-
-    private IEnumerator OnReload()
-    {
-        yield return new WaitForSeconds(_reloadTime);
-
-        if(_amountAmmo > _clipSize)
-            _currentClipAmount = _clipSize;
         else
-            _currentClipAmount = _amountAmmo;
-
-        _isCanShoot = true;
+            return false;            
     }
-
 }

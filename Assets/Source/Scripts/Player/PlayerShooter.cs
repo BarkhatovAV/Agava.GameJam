@@ -15,7 +15,6 @@ public class PlayerShooter : MonoBehaviour
     private void Start()
     {
         _currentWeapon = _startWeapon;
-        ChangeWeapon();
     }
 
     private void Update()
@@ -33,6 +32,20 @@ public class PlayerShooter : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Q))
             ChangeWeapon();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            TryReload();
+    }
+
+    private void TryReload()
+    {
+        if (_currentWeapon is IReloadable)
+            Reload((IReloadable)_currentWeapon);
+    }
+
+    private void Reload(IReloadable reloadable)
+    {
+        reloadable.Reload();            
     }
 
     private void ChangeWeapon()
