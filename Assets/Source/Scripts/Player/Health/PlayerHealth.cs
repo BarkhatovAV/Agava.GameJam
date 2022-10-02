@@ -36,7 +36,11 @@ public class PlayerHealth : MonoBehaviour, ITarget
         }
 
         if (_value <= 0)
+        {
             Died?.Invoke();
+            this.enabled = false;
+        }
+
     }
 
     public void Heal(int health)

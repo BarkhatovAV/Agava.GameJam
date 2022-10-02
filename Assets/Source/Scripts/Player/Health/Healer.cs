@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Healer : MonoBehaviour
@@ -11,6 +9,7 @@ public class Healer : MonoBehaviour
         if(other.TryGetComponent(out PlayerHealth player))
         {
             player.Heal(_value);
+            Destroy(gameObject);
         }
     }
 }

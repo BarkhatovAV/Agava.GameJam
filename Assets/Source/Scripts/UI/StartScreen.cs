@@ -8,6 +8,7 @@ public class StartScreen : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private Transform _screen;
+    [SerializeField] private SoundMuteHandler _sound;
 
     private void OnEnable()
     {
@@ -21,12 +22,14 @@ public class StartScreen : MonoBehaviour
 
     private void Start()
     {
+        _sound.Stop();
         _screen.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 
     private void OnButtonClick()
     {
+        _sound.Play();
         Time.timeScale = 1;
         _screen.gameObject.SetActive(false);
     }

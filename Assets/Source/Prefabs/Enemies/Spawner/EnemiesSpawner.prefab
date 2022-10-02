@@ -84,7 +84,7 @@ MonoBehaviour:
   - {fileID: 1472588438246007195, guid: 3a9ef833d19e73e4589c66560954da81, type: 3}
   - {fileID: 4960936939052301180, guid: 4a9ba736cc972b245bbfc6fa84022d6d, type: 3}
   _secondsBetweenSpawn: 0.8
-  _maximumCount: 250
+  _maximumCount: 150
   _countBetweenWaves: 50
   _secondsBetweenWaves: 10
   _target: {fileID: 0}
