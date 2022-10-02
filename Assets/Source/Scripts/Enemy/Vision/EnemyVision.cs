@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
+    [SerializeField] private LayerMask _layerMask;
+
     private ITarget _target;
     private RaycastHit _raycastHit;
     private Ray _ray;
@@ -28,7 +30,7 @@ public class EnemyVision : MonoBehaviour
     {
         _ray = new Ray(transform.position, DirectionToTarget());
 
-        if (Physics.Raycast(_ray, out _raycastHit, DistanceToTarget))
+        if (Physics.Raycast(_ray, out _raycastHit, DistanceToTarget, _layerMask))
         {
             if (_raycastHit.collider.gameObject.TryGetComponent(out ITarget _))
                 TargetIsVisible = true;
