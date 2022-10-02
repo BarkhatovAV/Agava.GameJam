@@ -36,11 +36,6 @@ public class PlayerKiller : MonoBehaviour
         _health.Died -= OnDied;
 
     }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.M))
-            OnDied();
-    }
 
     private void OnDied()
     {
