@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +7,13 @@ public class KillsCounter : MonoBehaviour
     [SerializeField] private EnemiesSpawner _enemiesSpawner;
 
     private List<Enemy> _enemies = new List<Enemy>();
-    private int _maxEnemy;
     private int _currentCount;
     private Vector3 _lastEnemyDeathPoint;
 
     public event Action LimitReached;
     public event Action<int> KillsCountChanged;
 
-    public int MaxEnemy => _maxEnemy;
+    public int MaxEnemy => _enemiesSpawner.MaximumCount;
     public Vector3 LastEnemyDeathPoint => _lastEnemyDeathPoint;
 
     private void OnValidate()
@@ -43,6 +41,7 @@ public class KillsCounter : MonoBehaviour
         if(!_enemies.Contains(enemy))
         {
             enemy.Died += OnEnemyDied;
+            _enemies.Add(enemy);
         }
     }
 
@@ -52,7 +51,7 @@ public class KillsCounter : MonoBehaviour
         _currentCount++;
         KillsCountChanged?.Invoke(_currentCount);
 
-        if (_currentCount >= _maxEnemy)
+        if (_currentCount >= MaxEnemy)
         {
             LimitReached?.Invoke();
         }
