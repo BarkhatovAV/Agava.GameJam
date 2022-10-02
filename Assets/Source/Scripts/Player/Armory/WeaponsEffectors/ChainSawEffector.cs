@@ -4,7 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class ChainSawEffector : WeaponEffector
 {
-    AudioSource _audioEffectAttack;
+    [SerializeField] private AudioClip _audioSawIdle;
+    [SerializeField] private AudioClip _audioSawAttack;
+
+    AudioSource _audioEffect;
+    
 
     private Animator _animator;
     private const string c_ShakeSaw = "ShakeSaw";
@@ -13,23 +17,30 @@ public class ChainSawEffector : WeaponEffector
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _audioEffectAttack = GetComponent<AudioSource>();
+        _audioEffect = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
         _animator.Play(c_Idle);
+        ChangeAudioEffect(_audioSawIdle);
     }
 
     protected override void StartPlayEffects()
     {
         _animator.Play(c_ShakeSaw);
-        _audioEffectAttack.Play();
+        ChangeAudioEffect(_audioSawAttack);
     }
 
     protected override void StopPlayEffects()
     {
-        _audioEffectAttack.Stop();
+        ChangeAudioEffect(_audioSawIdle);
         _animator.Play(c_Idle);
+    }
+
+    private void ChangeAudioEffect(AudioClip audio)
+    {
+        _audioEffect.clip = audio;
+        _audioEffect.Play();
     }
 }
