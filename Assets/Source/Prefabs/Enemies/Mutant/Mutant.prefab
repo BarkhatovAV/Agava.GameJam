@@ -35830,6 +35830,7 @@ MonoBehaviour:
   _delayBeforeDeath: 2
   _bloodFromHit: {fileID: 999621741834046528}
   _bloodExplosion: {fileID: 198936971546395516, guid: 35f735ea8ab99424893b817d677b094d, type: 3}
+  _bloodSound: {fileID: 2149727411351315729, guid: 6da5548e1642317429a9ba5cb91d9e04, type: 3}
 --- !u!114 &9050181154773235012
 MonoBehaviour:
   m_ObjectHideFlags: 0

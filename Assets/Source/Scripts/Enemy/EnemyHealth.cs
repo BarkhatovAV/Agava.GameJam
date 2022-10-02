@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float _delayBeforeDeath;
     [SerializeField] private ParticleSystem _bloodFromHit;
     [SerializeField] private ParticleSystem _bloodExplosion;
+    [SerializeField] private EnemyBloodSound _bloodSound;
 
     private Animator _animator;
     private int _currentValue;
@@ -55,6 +56,7 @@ public class EnemyHealth : MonoBehaviour
         Ended?.Invoke();
         _animator.SetBool(EnemyAnimator.Params.IsDying, true);
         yield return new WaitForSeconds(_delayBeforeDeath);
+        Instantiate(_bloodSound, transform.position, Quaternion.identity);
         Instantiate(_bloodExplosion, transform.position, _bloodExplosion.transform.rotation);
         Died?.Invoke();
     }

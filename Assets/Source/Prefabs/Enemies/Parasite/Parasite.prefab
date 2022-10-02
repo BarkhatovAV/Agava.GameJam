@@ -380,6 +380,7 @@ MonoBehaviour:
   _delayBeforeDeath: 2
   _bloodFromHit: {fileID: 8331236833190870453}
   _bloodExplosion: {fileID: 198454593196207324, guid: 013f40a2f9e6c294ebfb06cbf7780362, type: 3}
+  _bloodSound: {fileID: 2149727411351315729, guid: 6da5548e1642317429a9ba5cb91d9e04, type: 3}
 --- !u!114 &1472588438246007199
 MonoBehaviour:
   m_ObjectHideFlags: 0
