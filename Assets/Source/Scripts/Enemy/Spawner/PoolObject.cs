@@ -2,9 +2,10 @@ using UnityEngine;
 
 public abstract class PoolObject : MonoBehaviour
 {
-    [SerializeField] private uint _clonesCount;
+    [Min(0)]
+    [SerializeField] private int _clonesCount;
 
-    public uint ClonesCount => _clonesCount;
+    public int ClonesCount => _clonesCount;
     public bool Deactivated => gameObject.activeSelf == false;
 
     public void Activate() => gameObject.SetActive(true);

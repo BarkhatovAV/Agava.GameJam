@@ -8,11 +8,14 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [SerializeField] private float _secondsBetweenSpawn;
     [Min(0)]
     [SerializeField] private int _needCount;
-    [SerializeField] private PlayerHealth _targetBehaviour;
+    [Min(0)]
+    [SerializeField] private int _countBetweenWaves;
+    [Min(0)]
+    [SerializeField] private float _secondsBetweenWaves;
+    [SerializeField] private PlayerHealth _target;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Transform _contaner;
 
-    private ITarget _target;
     private int _spawned;
 
     public event Action<Enemy> Spawned;
@@ -20,20 +23,23 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     private void Start()
     {
         Initialize(_contaner);
-        _target = _targetBehaviour;
         StartCoroutine(Spawn());
     }
 
     private IEnumerator Spawn()
     {
-        var delay = new WaitForSeconds(_secondsBetweenSpawn);
+        var delayBetweenSpawn = new WaitForSeconds(_secondsBetweenSpawn);
+        var delayBetweenWave = new WaitForSeconds(_secondsBetweenWaves);
 
         while (_target != null && _spawned < _needCount && TryGetRandomObject(out Enemy enemy))
         {
             Initialize(enemy);
             Spawned?.Invoke(enemy);
             _spawned++;
-            yield return delay;
+            yield return delayBetweenSpawn;
+
+            if (_spawned % _countBetweenWaves == 0)
+                yield return delayBetweenWave;
         }
     }
 
