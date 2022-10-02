@@ -47,7 +47,7 @@ public  class LevelRestarter : MonoBehaviour
 
     private IEnumerator WaitRestart()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(5);
 
         _isRestartEnable = true;
 
