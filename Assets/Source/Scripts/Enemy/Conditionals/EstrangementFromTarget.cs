@@ -13,6 +13,6 @@ public class EstrangementFromTarget : Conditional
 
     private bool CanMove()
     {
-        return EnemyVision.Value.DistanceToTarget > TargetDistance.Value;
+        return EnemyVision.Value.DistanceToTarget > TargetDistance.Value || EnemyVision.Value.TargetIsVisible == false;
     }
 }
