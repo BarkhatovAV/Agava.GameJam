@@ -103,13 +103,9 @@ public abstract class WeaponEffector : MonoBehaviour
 
             if (transform.localPosition == target)
                 if (target.z == targetZMax)
-                {
                     target = GetRecoilTarget(targetZMin);
-                }
                 else
-                {
                     target = GetRecoilTarget(targetZMax);
-                }
         
 
             yield return new WaitForSeconds(0.01f);
