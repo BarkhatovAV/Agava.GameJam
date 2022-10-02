@@ -35,6 +35,9 @@ public class PlayerShooter : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
             TryReload();
+
+        if(Input.mouseScrollDelta.y != 0)
+            ChangeWeapon(Input.mouseScrollDelta.y);
     }
 
     private void TryReload()
@@ -51,5 +54,13 @@ public class PlayerShooter : MonoBehaviour
     private void ChangeWeapon()
     {
         _currentWeapon = _armory.ChangeWeapon();
+    }
+
+    private void ChangeWeapon(float mouseDelta)
+    {
+        int weaponNumber = (int)mouseDelta;
+        weaponNumber = Mathf.Clamp(weaponNumber, -1, 1);
+
+        _currentWeapon = _armory.ChangeWeapon(weaponNumber);
     }
 }
