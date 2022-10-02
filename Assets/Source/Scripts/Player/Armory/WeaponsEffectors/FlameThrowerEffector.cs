@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class FlameThrowerAnimator : WeaponAnimator
+public class FlameThrowerEffector : WeaponEffector
 {
     [SerializeField] private ParticleSystem _particleFlame;
 
@@ -15,13 +13,13 @@ public class FlameThrowerAnimator : WeaponAnimator
         _particleFlame.Stop();
     }
 
-    protected override void StartAnimation()
+    protected override void StartPlayEffects()
     {
         _particleFlame.Play();
         _audioEffect.Play();
     }
 
-    protected override void StopAnimation()
+    protected override void StopPlayEffects()
     {
         _particleFlame.Stop();
         _audioEffect.Stop();
