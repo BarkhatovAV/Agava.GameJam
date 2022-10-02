@@ -51,6 +51,7 @@ public class MachineGunEffector : WeaponEffector
             ChangeBarrelColor(Color.red);
             _audioEffect.Play();
             PlayParticles();
+            StartAnimateShotRecoil();
         }
     }
 
@@ -60,6 +61,7 @@ public class MachineGunEffector : WeaponEffector
         ChangeBarrelColor(Color.white);
         _audioEffect.Stop();
         StopPlayParticles();
+        StoptAnimateShotRecoil();  
 
     }
 
@@ -118,8 +120,7 @@ public class MachineGunEffector : WeaponEffector
         while(_material.color != targetColor)
         {
             Color color = _material.color;
-            color.g = Mathf.Lerp(color.g, targetColor.g, _changeColorSpeed * Time.deltaTime);
-            color.b = Mathf.Lerp(color.b, targetColor.b, _changeColorSpeed * Time.deltaTime);
+            color = Color.Lerp(color, targetColor, _changeColorSpeed * Time.deltaTime);
             _material.color = color;
 
             yield return new WaitForSeconds(0.05f);
