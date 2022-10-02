@@ -1,15 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MachineGunAnimator : WeaponAnimator
+[RequireComponent(typeof(AudioSource))]
+public class MachineGunEffector : WeaponEffector
 {
     [SerializeField] private float _changeRotateSpeed;
     [SerializeField] private float _changeColorSpeed;
     [SerializeField] private float _maxBarrelSpeed;
     [SerializeField] private Material _material;
+    [SerializeField] private ParticleSystem _particleBulletsShells;
+    [SerializeField] private ParticleSystem _particleFire;
 
     private Animator _animator;
+    private AudioSource _audioEffect;
     private Coroutine _coroutineRotate;
     private Coroutine _coroutinColorChange;
 
@@ -17,24 +20,31 @@ public class MachineGunAnimator : WeaponAnimator
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
+        _audioEffect = GetComponentInChildren<AudioSource>();
     }
 
     private void OnEnable()
     {
         _animator.speed = 0;
         _material.color = Color.white;
+        StopPlayParticles();
     }
 
-    protected override void StartAnimation()
+    protected override void StartPlayEffects()
     {
         ChangeBarrelRotateSpeed(_maxBarrelSpeed);
         ChangeBarrelColor(Color.red);
+        _audioEffect.Play();
+        PlayParticles();
     }
 
-    protected override void StopAnimation()
+    protected override void StopPlayEffects()
     {
         ChangeBarrelRotateSpeed(0);
         ChangeBarrelColor(Color.white);
+        _audioEffect.Stop();
+        StopPlayParticles();
+
     }
 
     private void ChangeBarrelColor(Color targetColor)
@@ -51,6 +61,18 @@ public class MachineGunAnimator : WeaponAnimator
             StopCoroutine(_coroutineRotate);
 
         _coroutineRotate = StartCoroutine(OnRotateBarrel(targetSpeed));
+    }
+
+    private void PlayParticles()
+    {
+        _particleBulletsShells.Play();
+        _particleFire.Play();
+    }
+
+    private void StopPlayParticles()
+    {
+        _particleBulletsShells.Stop();
+        _particleFire.Stop();
     }
 
     private IEnumerator OnRotateBarrel(float targetSpeed)
