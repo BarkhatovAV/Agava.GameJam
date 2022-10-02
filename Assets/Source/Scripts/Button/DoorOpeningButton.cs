@@ -29,9 +29,11 @@ public class DoorOpeningButton : MonoBehaviour
         if (other.TryGetComponent(out PlayerMovement _))
         {
             _animator.SetTrigger(DoorOpeningButtonAnimator.Params.IsDescends);
-            
+
             if (_limitReached)
                 _door.Open();
+            else
+                _killsCounter.CounterTrigger();
         }
     }
 
