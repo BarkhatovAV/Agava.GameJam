@@ -11,8 +11,10 @@ public class UIPlayerKiller : MonoBehaviour
     [SerializeField] private Image _imageWasted;
     [SerializeField] private PlayerHealth _health;
     [SerializeField] private float _closeEyeSpeed;
+    [SerializeField] private float _targetSizeImageWasted;
 
-
+    private float _delayResizeImageWasted = 12;
+    
     private void OnValidate()
     {
         _health = FindObjectOfType<PlayerHealth>();
@@ -57,9 +59,9 @@ public class UIPlayerKiller : MonoBehaviour
 
     private IEnumerator OnWastedIncrease()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(_delayResizeImageWasted);
 
-        while(_imageWasted.rectTransform.sizeDelta.x < 400)
+        while(_imageWasted.rectTransform.sizeDelta.x < _targetSizeImageWasted)
         {
             WastedIncrease(1);
 
