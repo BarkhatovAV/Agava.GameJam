@@ -29,7 +29,6 @@ public class FlameThrower : Weapon, IWeapon
 
     private void OnTriggerStay(Collider other)
     {
-        print(other.gameObject);
         if (other.TryGetComponent(out Enemy enemy))
             enemy.Apply(_damage);
     }

@@ -55,7 +55,7 @@ public class ChainSawEffector : WeaponEffector
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.TryGetComponent(out Ground ground))
+        if(other.TryGetComponent(out Enemy enemy))
             _particleBlood.Play();
     }
 }
