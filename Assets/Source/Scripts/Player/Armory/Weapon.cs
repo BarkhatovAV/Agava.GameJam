@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private int _damage;
+    [SerializeField] protected int _damage;
     [SerializeField] protected float _shotDistance;
     [SerializeField] private float _delayBetweenShots;
 

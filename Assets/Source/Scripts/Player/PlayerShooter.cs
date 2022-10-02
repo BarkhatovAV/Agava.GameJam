@@ -15,7 +15,6 @@ public class PlayerShooter : MonoBehaviour
     private void Start()
     {
         _currentWeapon = _startWeapon;
-        ChangeWeapon();
     }
 
     private void Update()
