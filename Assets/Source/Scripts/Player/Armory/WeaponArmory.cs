@@ -32,14 +32,4 @@ public class WeaponArmory : MonoBehaviour
         else
             _weapons[_currentWeaponIndex].gameObject.SetActive(true);
     }
-
-    private void AddBullets()
-    {
-
-    }
-
-    private void ShootBullets()
-    {
-
-    }
 }
