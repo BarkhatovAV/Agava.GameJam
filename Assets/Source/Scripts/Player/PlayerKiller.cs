@@ -28,21 +28,21 @@ public class PlayerKiller : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.Died += OnDie;
+        _health.Died += OnDied;
     }
 
     private void OnDisable()
     {
-        _health.Died -= OnDie;
+        _health.Died -= OnDied;
 
     }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.M))
-            OnDie();
+            OnDied();
     }
 
-    private void OnDie()
+    private void OnDied()
     {
         _viewRotator.enabled = false;
         _shooter.enabled = false;
