@@ -55,8 +55,8 @@ public class EnemyHealth : MonoBehaviour
     {
         Ended?.Invoke();
         _animator.SetBool(EnemyAnimator.Params.IsDying, true);
-        yield return new WaitForSeconds(_delayBeforeDeath);
         Instantiate(_bloodSound, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(_delayBeforeDeath);
         Instantiate(_bloodExplosion, transform.position, _bloodExplosion.transform.rotation);
         Died?.Invoke();
     }
