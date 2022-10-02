@@ -11,10 +11,12 @@ public abstract class WeaponEffector : MonoBehaviour
     private Coroutine _coroutineShotRecoil;
     private float _recoilDistance = 0.05f;
     private float _recoilSpeed = 10;
+    private Vector3 _baseLocalPosition;
 
     private void Start()
     {
         _baseLocalRotation = transform.localRotation;
+        _baseLocalPosition = transform.localPosition;
         _targetRotationX = Quaternion.Euler(_targetAngelRotationX, transform.localRotation.y, transform.localRotation.z);
     }
 
@@ -98,8 +100,8 @@ public abstract class WeaponEffector : MonoBehaviour
 
     private IEnumerator OnRecoil()
     {
-        float targetZMin = transform.localPosition.z - _recoilDistance;
-        float targetZMax = transform.localPosition.z + _recoilDistance;
+        float targetZMin = _baseLocalPosition.z - _recoilDistance;
+        float targetZMax = _baseLocalPosition.z + _recoilDistance;
         Vector3 target = GetRecoilTarget(targetZMin);
         
         while(true)
