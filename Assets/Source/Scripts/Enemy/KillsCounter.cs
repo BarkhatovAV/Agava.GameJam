@@ -11,6 +11,7 @@ public class KillsCounter : MonoBehaviour
     private Vector3 _lastEnemyDeathPoint;
 
     public event Action LimitReached;
+    public event Action CounterTriggered;
     public event Action<int> KillsCountChanged;
 
     public int MaxEnemy => _enemiesSpawner.MaximumCount;
@@ -34,6 +35,12 @@ public class KillsCounter : MonoBehaviour
         {
             enemy.Died -= OnEnemyDied;
         }
+    }
+
+
+    public void CounterTrigger()
+    {
+        CounterTriggered?.Invoke();
     }
 
     private void OnSpawned(Enemy enemy)
