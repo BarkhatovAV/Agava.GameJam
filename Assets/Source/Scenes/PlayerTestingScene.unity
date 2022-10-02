@@ -841,6 +841,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 887137558261993449, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
+      propertyPath: _damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 887137558261993449, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
+      propertyPath: _shotDistance
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4481495614826250755, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
       propertyPath: m_Name
       value: 'Player Main Camera '
@@ -905,9 +913,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6691784098529922556, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
+      propertyPath: _damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086966081206323572, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
+      propertyPath: _damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8086966081206323572, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
       propertyPath: _delayBetweenShots
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868980557489750113, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
+      propertyPath: _damage
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
