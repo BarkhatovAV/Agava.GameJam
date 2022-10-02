@@ -202,6 +202,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4481495614826250767}
     m_Modifications:
     - target: {fileID: -4240831366694333039, guid: aef0a5fd18f8fc745b48fb751ebcf18b, type: 3}
+      propertyPath: _damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4240831366694333039, guid: aef0a5fd18f8fc745b48fb751ebcf18b, type: 3}
       propertyPath: _particleSystem
       value: 
       objectReference: {fileID: 4391010839086810915}
@@ -259,6 +263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aef0a5fd18f8fc745b48fb751ebcf18b, type: 3}
+--- !u!1 &4482579176327190138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1172656402973578, guid: aef0a5fd18f8fc745b48fb751ebcf18b, type: 3}
+  m_PrefabInstance: {fileID: 4481495614736848368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4485505477062383134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4169295823307758, guid: aef0a5fd18f8fc745b48fb751ebcf18b, type: 3}
@@ -269,12 +278,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -4240831366694333039, guid: aef0a5fd18f8fc745b48fb751ebcf18b, type: 3}
   m_PrefabInstance: {fileID: 4481495614736848368}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4482579176327190138}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17ecaabd5813c464cb71431b15c483e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &981964093
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482579176327190138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.2645846
+  m_Height: 4
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.12, z: 3}
 --- !u!1001 &4481495615323783905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -620,11 +643,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
---- !u!4 &4485359217259427291 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4023067158591890, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
-  m_PrefabInstance: {fileID: 4481495615798283337}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8086966081206323572 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -3599550066503776963, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
@@ -636,6 +654,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0276aec66e3bb5046ac7da5dc6371cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &4485359217259427291 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4023067158591890, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
+  m_PrefabInstance: {fileID: 4481495615798283337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4481495616460068616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -721,6 +744,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a807abad9d573264b96019ffcfcae869, type: 3}
+--- !u!1 &4482252538811685460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495796598181212, guid: a807abad9d573264b96019ffcfcae869, type: 3}
+  m_PrefabInstance: {fileID: 4481495616460068616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4483213128281363194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1946215608911346, guid: a807abad9d573264b96019ffcfcae869, type: 3}
@@ -742,11 +770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fb3811abbdf1f49825a11e25cc25e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4482252538811685460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1495796598181212, guid: a807abad9d573264b96019ffcfcae869, type: 3}
-  m_PrefabInstance: {fileID: 4481495616460068616}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &133331792
 Animator:
   serializedVersion: 4
