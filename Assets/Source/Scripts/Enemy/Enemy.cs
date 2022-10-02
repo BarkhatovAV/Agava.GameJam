@@ -18,6 +18,7 @@ public class Enemy : PoolObject
     {
         _health.Ended += OnHealthEnded;
         _health.Died += OnDied;
+        _behaviorTree.enabled = true;
     }
 
     private void OnDisable()
