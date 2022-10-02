@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHealthView : MonoBehaviour
 {
-    [SerializeField] private Image _filledImage;
+    [SerializeField] private SlicedFilledImage _filledImage;
     [SerializeField] private PlayerHealth _playerHealth;
 
     private void OnValidate()
