@@ -31,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveDirection(Vector3 direction)
     {
-        Vector3 move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * direction * _speed * Time.deltaTime;
+        Vector3 normilizedDirection = direction.normalized;
+        Vector3 move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * normilizedDirection * _speed * Time.deltaTime;
 
         _rigidbody.velocity =  new Vector3(move.x, _rigidbody.velocity.y, move.z);
     }
