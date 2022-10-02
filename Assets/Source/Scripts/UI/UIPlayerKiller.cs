@@ -12,9 +12,9 @@ public class UIPlayerKiller : MonoBehaviour
     [SerializeField] private PlayerHealth _health;
     [SerializeField] private float _closeEyeSpeed;
     [SerializeField] private float _targetSizeImageWasted;
+    [SerializeField] private float _delayResizeImageWasted;
 
-    private float _delayResizeImageWasted = 12;
-    
+
     private void OnValidate()
     {
         _health = FindObjectOfType<PlayerHealth>();

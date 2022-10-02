@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: _targetSizeImageWasted
       value: 800
       objectReference: {fileID: 0}
+    - target: {fileID: 1652576398925810390, guid: edd3a43a5b50f1c4c8e1dfc932b5e8f4, type: 3}
+      propertyPath: _delayResizeImageWasted
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1652576398925810392, guid: edd3a43a5b50f1c4c8e1dfc932b5e8f4, type: 3}
       propertyPath: m_Name
       value: ClosingEye
