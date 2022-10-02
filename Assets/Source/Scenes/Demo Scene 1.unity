@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
+  m_AmbientSkyColor: {r: 1.8880861, g: 1.8880861, b: 1.8880861, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1479207, g: 0.09139859, b: 0.036143094, a: 1}
+  m_IndirectSpecularColor: {r: 0.6577157, g: 0.33063307, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -497,6 +497,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 160687813, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3039783
+      objectReference: {fileID: 0}
+    - target: {fileID: 160687813, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3039783
+      objectReference: {fileID: 0}
+    - target: {fileID: 160687813, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9339623
+      objectReference: {fileID: 0}
     - target: {fileID: 616203833791959746, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
       propertyPath: m_Name
       value: EnvironmentLevel1
@@ -545,6 +557,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 616203834379461202, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 45.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 616203834625794995, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 616203834636455923, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_Range
+      value: 10.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 616203834636455923, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 637662169441497263, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d3bd3947f6852e64ca2bf4abbd204fef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
 --- !u!1001 &2510520993733307710
