@@ -27,7 +27,7 @@ public class MachineGun : Weapon, IReloadable
         if ((_isCanShoot == true) && (CheckDelay() == true))
         {
             _currentClipAmount--;
-            print(_currentClipAmount);
+
             base.Fire(hitInfo);
 
             if (CheckNeedReload() == true)

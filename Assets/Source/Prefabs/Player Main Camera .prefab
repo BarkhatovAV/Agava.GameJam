@@ -862,19 +862,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4557533270495408, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97953314
+      value: 0.9795392
       objectReference: {fileID: 0}
     - target: {fileID: 4557533270495408, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.09106866
+      value: -0.09096775
       objectReference: {fileID: 0}
     - target: {fileID: 4557533270495408, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.179187
+      value: -0.17923677
       objectReference: {fileID: 0}
     - target: {fileID: 4557533270495408, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.010653489
+      value: 0.010096948
       objectReference: {fileID: 0}
     - target: {fileID: 4557533270495408, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -886,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4557533270495408, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 3.115
+      value: 3.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ca9bcafe7b6124ba175d36e7661b84, type: 3}
@@ -1072,7 +1072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3599550066503776963, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
       propertyPath: _reloadTime
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -3599550066503776963, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
       propertyPath: _shotDistance
@@ -1348,11 +1348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3638563717640067297, guid: a807abad9d573264b96019ffcfcae869, type: 3}
       propertyPath: _clipSize
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3638563717640067297, guid: a807abad9d573264b96019ffcfcae869, type: 3}
       propertyPath: _reloadTime
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3638563717640067297, guid: a807abad9d573264b96019ffcfcae869, type: 3}
       propertyPath: _shotDistance
@@ -1510,6 +1510,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1500977581459262008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483213128281363194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc55f7e81823ea947855d733cf17dca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _value: 100
 --- !u!114 &6345474377425208893
 MonoBehaviour:
   m_ObjectHideFlags: 0
