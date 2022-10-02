@@ -39,7 +39,6 @@ public class KillsCounter : MonoBehaviour
         }
     }
 
-
     public void CounterTrigger()
     {
         CounterTriggered?.Invoke();

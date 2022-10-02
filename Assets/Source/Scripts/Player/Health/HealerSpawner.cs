@@ -7,9 +7,16 @@ public class HealerSpawner : MonoBehaviour
 {
     [SerializeField] private PlayerHealth _playerHealth;
     [SerializeField] private Healer _template;
+    [SerializeField] private KillsCounter _counter;
 
     private float _delayUntilTheNextBonus = 30;
     private bool _canSpawn = true;
+
+    private void OnValidate()
+    {
+        _counter = FindObjectOfType<KillsCounter>();
+        _playerHealth = FindObjectOfType<PlayerHealth>();
+    }
 
     private void OnEnable()
     {
@@ -25,6 +32,7 @@ public class HealerSpawner : MonoBehaviour
     {
         if(_canSpawn)
         {
+            Instantiate(_template, _counter.LastEnemyDeathPoint, Quaternion.identity);
             _canSpawn = false;
             StartCoroutine(WaitUntilTheNextBonus());
         }
