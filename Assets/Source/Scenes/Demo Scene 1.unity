@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: _killsCouner
       value: 
       objectReference: {fileID: 1671570694}
+    - target: {fileID: 8169384535580376839, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9026737306392603282, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -769,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9026737306392603286, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
       propertyPath: m_Name
-      value: HUD
+      value: Canvas HUD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
