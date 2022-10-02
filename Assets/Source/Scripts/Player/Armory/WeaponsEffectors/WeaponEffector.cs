@@ -3,13 +3,15 @@ using UnityEngine;
 
 public abstract class WeaponEffector : MonoBehaviour
 {
-    private Quaternion _baseRotation;
+    private Quaternion  _baseLocalRotation;
     private float _timeOnAnimateWeaponMove = 0.5f;
-    private float _targetAngelRotationX;
+    private float _targetAngelRotationX = 35;
+    private Quaternion _targetRotationX;
 
     private void Start()
     {
-        _baseRotation = transform.rotation;
+        _baseLocalRotation = transform.localRotation;
+        _targetRotationX = Quaternion.Euler(_targetAngelRotationX, transform.localRotation.y, transform.localRotation.z);
     }
 
     private void Update()
@@ -30,27 +32,30 @@ public abstract class WeaponEffector : MonoBehaviour
 
     private IEnumerator OnReload(float reloadTime)
     {
+        print(Time.time);
         float coroutineDelay = 0.01f;
-        float rotationStep = (transform.rotation.x - _targetAngelRotationX) / _timeOnAnimateWeaponMove * coroutineDelay;
+        float rotationStep = (_targetAngelRotationX - _baseLocalRotation.x) * coroutineDelay;
 
-        while(transform.rotation.x != _targetAngelRotationX)
+
+        while(transform.localRotation != _targetRotationX)
         {
-            Quaternion rotation = transform.rotation;
-            rotation.x = Mathf.MoveTowards(rotation.x, _targetAngelRotationX, rotationStep);
-            transform.rotation = rotation;
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, _targetRotationX, rotationStep);
 
             yield return new WaitForSeconds(coroutineDelay);
         }
+        print(Time.time);
 
-        yield return new WaitForSeconds(reloadTime - _timeOnAnimateWeaponMove * 2);
+        float waitingTime = reloadTime - rotationStep * coroutineDelay * 2;
 
-        while (transform.rotation.x != _baseRotation.x)
+        yield return new WaitForSeconds(waitingTime);
+        print(Time.time);
+
+        while (transform.localRotation != _baseLocalRotation)
         {
-            Quaternion rotation = transform.rotation;
-            rotation.x = Mathf.MoveTowards(rotation.x, _baseRotation.x, rotationStep);
-            transform.rotation = rotation;
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, _baseLocalRotation, rotationStep);
 
             yield return new WaitForSeconds(coroutineDelay);
         }
+        print(Time.time);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class MachineGun : Weapon, IReloadable
     private BulletsArmory _bullets = new BulletsArmory();
     private int _currentClipAmount;
     private bool _isCanShoot;
+
+    public event Action<float> ReloadStarted;
+    public event Action ReloadFinished;
 
     private void Start()
     {
@@ -35,6 +39,7 @@ public class MachineGun : Weapon, IReloadable
     {
         _isCanShoot = false;
         StartCoroutine(OnReload());
+        ReloadStarted?.Invoke(_reloadTime);
     }
 
     public void TakeBullets(int value)
@@ -57,5 +62,6 @@ public class MachineGun : Weapon, IReloadable
             _currentClipAmount = _bullets.Value;
 
         _isCanShoot = true;
+        ReloadFinished?.Invoke();
     }
 }
