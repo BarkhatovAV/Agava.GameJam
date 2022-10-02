@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9df9c81ad04cf40b592c0434227af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startValue: 50
+  _startValue: 2
   _delayBeforeDeath: 2
   _bloodFromHit: {fileID: 8331236833190870453}
   _bloodExplosion: {fileID: 198454593196207324, guid: 013f40a2f9e6c294ebfb06cbf7780362, type: 3}

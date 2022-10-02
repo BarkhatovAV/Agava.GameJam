@@ -83,11 +83,11 @@ MonoBehaviour:
   - {fileID: 9050181154773235015, guid: ad186dbe09dc0994299542a73cf1c046, type: 3}
   - {fileID: 1472588438246007195, guid: 3a9ef833d19e73e4589c66560954da81, type: 3}
   - {fileID: 4960936939052301180, guid: 4a9ba736cc972b245bbfc6fa84022d6d, type: 3}
-  _secondsBetweenSpawn: 1
+  _secondsBetweenSpawn: 0.8
   _needCount: 100
   _countBetweenWaves: 50
-  _secondsBetweenWaves: 20
-  _targetBehaviour: {fileID: 0}
+  _secondsBetweenWaves: 10
+  _target: {fileID: 0}
   _spawnPoints:
   - {fileID: 4893433967386064513}
   - {fileID: 8013618919953412330}

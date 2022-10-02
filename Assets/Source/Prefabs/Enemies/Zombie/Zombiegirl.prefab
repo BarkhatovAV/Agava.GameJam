@@ -25607,7 +25607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed3a00bb462f2c438c4aa54c2532e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clonesCount: 30
+  _clonesCount: 20
 --- !u!114 &3361386529146800863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25663,7 +25663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9df9c81ad04cf40b592c0434227af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startValue: 80
+  _startValue: 3
   _delayBeforeDeath: 2
   _bloodFromHit: {fileID: 1785882209525559352}
   _bloodExplosion: {fileID: 198771926522987320, guid: 95f8e85235d81624e80a182d051cc130, type: 3}
