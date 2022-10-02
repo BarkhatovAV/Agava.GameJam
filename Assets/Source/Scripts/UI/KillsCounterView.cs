@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,9 @@ public class KillsCounterView : MonoBehaviour
     [SerializeField] private SlicedFilledImage _filledImage;
     [SerializeField] private TextMeshProUGUI _textMesh;
     [SerializeField] private KillsCounter _killsCouner;
+    [SerializeField] private Animator _animator;
+
+    private string _pulseAnimation = "Pulse";
 
     private void OnValidate()
     {
@@ -16,11 +20,18 @@ public class KillsCounterView : MonoBehaviour
     private void OnEnable()
     {
         _killsCouner.KillsCountChanged += OnKillsCountChanged;
+        _killsCouner.CounterTriggered += OnCounterTriggered;
     }
 
     private void OnDisable()
     {
         _killsCouner.KillsCountChanged -= OnKillsCountChanged;
+        _killsCouner.CounterTriggered -= OnCounterTriggered;
+    }
+
+    private void OnCounterTriggered()
+    {
+        _animator.SetTrigger(_pulseAnimation);
     }
 
     private void Awake()
