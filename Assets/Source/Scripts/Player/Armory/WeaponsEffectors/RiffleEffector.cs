@@ -38,6 +38,7 @@ public class RiffleEffector : WeaponEffector
         {
             _audioEffect.Play();
             PlayParticles();
+            StartAnimateShotRecoil();
         }
     }
 
@@ -45,6 +46,7 @@ public class RiffleEffector : WeaponEffector
     {
         _audioEffect?.Stop();
         StopPlayParticles();
+        StoptAnimateShotRecoil();
     }
 
     private void OnReloadStarted(float reloadTime)
