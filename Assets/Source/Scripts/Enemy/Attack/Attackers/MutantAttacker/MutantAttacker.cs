@@ -8,6 +8,11 @@ public class MutantAttacker : EnemyAttacker
     private EnemyHealth _health;
     private bool _attacked;
 
+    private void OnEnable()
+    {
+        _attacked = false;
+    }
+
     protected override void Awake()
     {
         base.Awake();
