@@ -8,8 +8,8 @@ public class BlastWave : MonoBehaviour
     [SerializeField] private int _damage;
     [Min(0)]
     [SerializeField] private float _targetRadius;
-    [Min(0)]
-    [SerializeField] private float _speed;
+
+    private readonly float _secondsBeforeDestroy = 0.2f;
 
     private SphereCollider _collider;
 
@@ -32,13 +32,8 @@ public class BlastWave : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         _collider.enabled = true;
-
-        while (_collider.radius != _targetRadius)
-        {
-            _collider.radius = Mathf.Lerp(_collider.radius, _targetRadius, _speed * Time.deltaTime);
-            yield return null;
-        }
-
+        _collider.radius = _targetRadius;
+        yield return new WaitForSeconds(_secondsBeforeDestroy);
         Destroy(gameObject);
     }
 }

@@ -3,13 +3,14 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyMover), typeof(EnemyAttacker), typeof(EnemyHealth))]
-[RequireComponent(typeof(BehaviorTree))]
+[RequireComponent(typeof(EnemyVision), typeof(BehaviorTree))]
 public class Enemy : PoolObject
 {
     private EnemyMover _mover;
     private EnemyAttacker _attacker;
     private BehaviorTree _behaviorTree;
     private EnemyHealth _health;
+    private EnemyVision _vision;
 
     public event Action<Vector3> Died;
 
@@ -31,6 +32,7 @@ public class Enemy : PoolObject
         _attacker = GetComponent<EnemyAttacker>();
         _behaviorTree = GetComponent<BehaviorTree>();
         _health = GetComponent<EnemyHealth>();
+        _vision = GetComponent<EnemyVision>();
     }
 
     public void Initialize(ITarget target)
@@ -40,6 +42,7 @@ public class Enemy : PoolObject
 
         _mover.Initialize(target);
         _attacker.Initialize(target);
+        _vision.Initialize(target);
     }
 
     public void Apply(int damage)

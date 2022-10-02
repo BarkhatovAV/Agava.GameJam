@@ -9,7 +9,6 @@ public class EnemyMover : MonoBehaviour
     private NavMeshAgent _agent;
     private Animator _animator;
 
-    public float DistanceToTarget => Vector3.Distance(transform.position, _target.CurrentPosition);
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
