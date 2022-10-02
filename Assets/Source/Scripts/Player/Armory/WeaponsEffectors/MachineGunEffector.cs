@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MachineGunEffector : WeaponEffector
 {
     [SerializeField] private float _changeRotateSpeed;
@@ -9,6 +10,7 @@ public class MachineGunEffector : WeaponEffector
     [SerializeField] private Material _material;
 
     private Animator _animator;
+    private AudioSource _audioEffect;
     private Coroutine _coroutineRotate;
     private Coroutine _coroutinColorChange;
 
@@ -16,6 +18,7 @@ public class MachineGunEffector : WeaponEffector
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
+        _audioEffect = GetComponentInChildren<AudioSource>();
     }
 
     private void OnEnable()
@@ -28,12 +31,14 @@ public class MachineGunEffector : WeaponEffector
     {
         ChangeBarrelRotateSpeed(_maxBarrelSpeed);
         ChangeBarrelColor(Color.red);
+        _audioEffect.Play();
     }
 
     protected override void StopPlayEffects()
     {
         ChangeBarrelRotateSpeed(0);
         ChangeBarrelColor(Color.white);
+        _audioEffect?.Stop();
     }
 
     private void ChangeBarrelColor(Color targetColor)
