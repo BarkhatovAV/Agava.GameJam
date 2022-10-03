@@ -13,6 +13,11 @@ public class WeaponSwitch : MonoBehaviour
         _weaponArmory = FindObjectOfType<WeaponArmory>();
     }
 
+    private void Start()
+    {
+        OnWeaponChanged(1);
+    }
+
     private void OnEnable()
     {
         _weaponArmory.WeaponChanged += OnWeaponChanged;

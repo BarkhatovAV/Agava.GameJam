@@ -380,6 +380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4481495614826250767}
     m_Modifications:
+    - target: {fileID: 809467991, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
+      propertyPath: m_Size.z
+      value: 65.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1900586067242068, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
       propertyPath: m_Name
       value: SM_Wep_AssaultRifle_01
@@ -453,6 +457,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4481495614826250767}
     m_Modifications:
+    - target: {fileID: 1647394147, guid: a807abad9d573264b96019ffcfcae869, type: 3}
+      propertyPath: m_Size.z
+      value: 33.96
+      objectReference: {fileID: 0}
     - target: {fileID: 1946215608911346, guid: a807abad9d573264b96019ffcfcae869, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Minigun_01
