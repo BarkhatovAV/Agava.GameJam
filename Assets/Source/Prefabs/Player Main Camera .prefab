@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6e46f7f1c2e51242a088899be8b1fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 400
+  _jumpForce: 260
 --- !u!114 &4481495614826250764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +382,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 809467991, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
       propertyPath: m_Size.z
-      value: 65.1
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 809467991, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
+      propertyPath: m_Center.z
+      value: 45.3
       objectReference: {fileID: 0}
     - target: {fileID: 1900586067242068, guid: ad49a19d2c4adc94b838606a5d459f85, type: 3}
       propertyPath: m_Name
@@ -459,7 +463,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1647394147, guid: a807abad9d573264b96019ffcfcae869, type: 3}
       propertyPath: m_Size.z
-      value: 33.96
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647394147, guid: a807abad9d573264b96019ffcfcae869, type: 3}
+      propertyPath: m_Center.z
+      value: 46.9
       objectReference: {fileID: 0}
     - target: {fileID: 1946215608911346, guid: a807abad9d573264b96019ffcfcae869, type: 3}
       propertyPath: m_Name
