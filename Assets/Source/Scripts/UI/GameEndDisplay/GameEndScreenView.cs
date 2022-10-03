@@ -8,6 +8,7 @@ public class GameEndScreenView : MonoBehaviour
     private void OnEnable()
     {
         _exitButton.onClick.AddListener(OnExitButtonClick);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnDisable()

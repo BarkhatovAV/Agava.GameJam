@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyMover), typeof(EnemyAttacker), typeof(EnemyHealth))]
-[RequireComponent(typeof(EnemyVision), typeof(BehaviorTree))]
+[RequireComponent(typeof(EnemyVision), typeof(BehaviorTree), typeof(BoxCollider))]
 public class Enemy : PoolObject
 {
     private EnemyMover _mover;
@@ -11,14 +11,17 @@ public class Enemy : PoolObject
     private BehaviorTree _behaviorTree;
     private EnemyHealth _health;
     private EnemyVision _vision;
+    private BoxCollider _collider;
 
     public event Action<Vector3> Died;
+    public event Action<Enemy> HealthEnded;
 
     private void OnEnable()
     {
         _health.Ended += OnHealthEnded;
         _health.Died += OnDied;
         _behaviorTree.enabled = true;
+        _collider.enabled = true;
     }
 
     private void OnDisable()
@@ -34,6 +37,7 @@ public class Enemy : PoolObject
         _behaviorTree = GetComponent<BehaviorTree>();
         _health = GetComponent<EnemyHealth>();
         _vision = GetComponent<EnemyVision>();
+        _collider = GetComponent<BoxCollider>();
     }
 
     public void Initialize(ITarget target)
@@ -54,8 +58,10 @@ public class Enemy : PoolObject
     private void OnHealthEnded()
     {
         _behaviorTree.enabled = false;
+        _collider.enabled = false;
         _mover.StopMoving();
         _attacker.StopAttack();
+        HealthEnded?.Invoke(this);
     }
 
     private void OnDied()

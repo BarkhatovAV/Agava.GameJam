@@ -20,17 +20,9 @@ public class PlayerShooter : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButton(0))
-        {
-            RaycastHit hitInfo;
-            Ray ray = new Ray(transform.position, transform.forward);
+            _currentWeapon.Fire();
 
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                _currentWeapon.Fire(hitInfo);
-            }
-        }
-
-        if(Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q))
             ChangeWeapon();
 
         if (Input.GetKeyDown(KeyCode.R))

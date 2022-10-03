@@ -22,12 +22,12 @@ public class AssaultRifle : Weapon, IReloadable
         _isCanShoot = true;
     }
 
-    public override void Fire(RaycastHit hitInfo)
+    public override void Fire()
     {
         if ((_isCanShoot == true) && (CheckDelay() == true))
         {
             _currentClipAmount--;
-            base.Fire(hitInfo);
+            base.Fire();
 
             if (CheckNeedReload() == true)
                 Reload();

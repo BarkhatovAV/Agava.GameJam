@@ -13,6 +13,7 @@ public class StartScreen : MonoBehaviour
     private void OnEnable()
     {
         _button.onClick.AddListener(OnButtonClick);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void OnDisable()
