@@ -53,6 +53,8 @@ public  class LevelRestarter : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(_waitingTimeBeforeRestart);
 
+        Time.timeScale = 1;
+
         Restart();
     }
 }
