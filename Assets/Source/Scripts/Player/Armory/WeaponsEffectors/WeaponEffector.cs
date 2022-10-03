@@ -12,6 +12,7 @@ public abstract class WeaponEffector : MonoBehaviour
     private Coroutine _coroutineShotRecoil;
     private float _recoilDistance = 0.05f;
     private float _recoilSpeed = 10;
+    private Vector3 _baseLocalPosition;
 
     private void Start()
     {

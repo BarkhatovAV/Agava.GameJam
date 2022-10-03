@@ -31,6 +31,7 @@ public class StartScreen : MonoBehaviour
     {
         _sound.Play();
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
         _screen.gameObject.SetActive(false);
     }
 }
