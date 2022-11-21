@@ -59,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator OnSlide(Vector3 direction)
     {
+        print("slide");
+
         _canSlide = false;
 
         float duration = 0.3f;
@@ -76,7 +78,15 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator OnReloadSlide()
     {
         SlideReloadStarted?.Invoke(_sliderReloadTime);
-        yield return new WaitForSeconds(_sliderReloadTime);
+
+        float time = 0;
+
+        while(time < _sliderReloadTime)
+        {
+            time += _stepSize;
+            yield return new WaitForSeconds(_stepSize);
+        }
+
         _canSlide = true;
     }
 }

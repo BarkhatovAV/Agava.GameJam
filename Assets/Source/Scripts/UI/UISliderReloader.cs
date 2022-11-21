@@ -25,10 +25,11 @@ public class UISliderReloader : MonoBehaviour
     private IEnumerator OnSliderReload(float duration)
     {
         float step = 0.01f;
-        float fillingStepSize = 1 / (duration/step);
+        float fillingStepSize = 1f / (duration/step);
+
         _imageSlider.fillAmount = 0;
 
-        while(_imageSlider.fillAmount != 1)
+        while (_imageSlider.fillAmount != 1)
         {
             _imageSlider.fillAmount += fillingStepSize;
             yield return new WaitForSeconds(step);
