@@ -30,7 +30,10 @@ public class FlameThrower : Weapon, IWeapon
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out Enemy enemy))
+        {
             enemy.Apply(_damage);
+            DealingDamage(_damage);
+        }
     }
 
     public void TakeBullets(int value)

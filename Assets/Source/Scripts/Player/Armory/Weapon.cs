@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +11,33 @@ public abstract class Weapon : MonoBehaviour
     private readonly List<Enemy> _enemies = new List<Enemy>();
 
     protected float _lastTimeShot;
+
+    public event Action<int> DamageDealed;
+
+    public virtual void Fire()
+    {
+        if (_enemies.Count != 0 && TryGetNearestEnemy(out Enemy enemy))
+        {
+            enemy.Apply(_damage);
+            DealingDamage(_damage);
+        }
+    }
+
+    protected void DealingDamage(int damage)
+    {
+        DamageDealed?.Invoke(damage);
+    }
+
+    protected bool CheckDelay()
+    {
+        if(_lastTimeShot + _delayBetweenShots < Time.time)
+        {
+            _lastTimeShot = Time.time;
+            return true;
+        }
+        else
+            return false;            
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,24 +52,6 @@ public abstract class Weapon : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy) && _enemies.Contains(enemy))
             _enemies.Remove(enemy);
-    }
-
-    public virtual void Fire()
-    {
-        if (_enemies.Count != 0 && TryGetNearestEnemy(out Enemy enemy))
-            enemy.Apply(_damage);
-
-    }
-
-    protected bool CheckDelay()
-    {
-        if(_lastTimeShot + _delayBetweenShots < Time.time)
-        {
-            _lastTimeShot = Time.time;
-            return true;
-        }
-        else
-            return false;            
     }
 
     private bool TryGetNearestEnemy(out Enemy target)

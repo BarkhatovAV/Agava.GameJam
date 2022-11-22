@@ -22,7 +22,7 @@ public class PlayerShooter : MonoBehaviour
         if (Input.GetMouseButton(0))
             _currentWeapon.Fire();
 
-            if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
             ChangeWeapon();
 
         if (Input.GetKeyDown(KeyCode.R))

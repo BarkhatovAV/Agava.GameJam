@@ -10,7 +10,7 @@ public class AssaultRifle : Weapon, IReloadable
 
     private BulletsArmory _bullets = new BulletsArmory();
     private int _currentClipAmount;
-    private bool _isCanShoot;
+    private bool _canShoot;
 
     public event Action<float> ReloadStarted;
     public event Action ReloadFinished;
@@ -19,12 +19,12 @@ public class AssaultRifle : Weapon, IReloadable
     {
         _bullets.AddBullets(1000000000);
         _currentClipAmount = _clipSize;
-        _isCanShoot = true;
+        _canShoot = true;
     }
 
     public override void Fire()
     {
-        if ((_isCanShoot == true) && (CheckDelay() == true))
+        if ((_canShoot == true) && (CheckDelay() == true))
         {
             _currentClipAmount--;
             base.Fire();
@@ -36,7 +36,7 @@ public class AssaultRifle : Weapon, IReloadable
 
     public void Reload()
     {
-        _isCanShoot = false;
+        _canShoot = false;
         StartCoroutine(OnReload());
         ReloadStarted?.Invoke(_reloadTime);
     }
@@ -60,7 +60,7 @@ public class AssaultRifle : Weapon, IReloadable
         else
             _currentClipAmount = _bullets.Value;
 
-        _isCanShoot = true;
+        _canShoot = true;
         ReloadFinished?.Invoke();
     }
 }
