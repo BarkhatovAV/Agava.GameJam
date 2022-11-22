@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33fb3811abbdf1f49825a11e25cc25e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 3
+  _damage: 10
   _shotDistance: 100
   _delayBetweenShots: 0.1
   _clipSize: 100

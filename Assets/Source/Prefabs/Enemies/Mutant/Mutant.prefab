@@ -35826,7 +35826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9df9c81ad04cf40b592c0434227af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startValue: 2
+  _startValue: 50
   _delayBeforeDeath: 2
   _bloodFromHit: {fileID: 999621741834046528}
   _bloodExplosion: {fileID: 198936971546395516, guid: 35f735ea8ab99424893b817d677b094d, type: 3}
@@ -35896,8 +35896,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.2
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!54 &8186880915544249507
 Rigidbody:
   m_ObjectHideFlags: 0
