@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4481495614826250754, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
       propertyPath: _slidePower
-      value: 2000
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 4481495614826250754, guid: e88c610e51e939c4b8f7969fe3e07000, type: 3}
       propertyPath: _sliderReloadTime
@@ -612,6 +612,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7434e8f943cb4d34990601ea1d714b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1513412357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3764934634357836437, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+  m_PrefabInstance: {fileID: 9026737307292938564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1608615756 stripped
@@ -1053,12 +1064,44 @@ PrefabInstance:
       propertyPath: _killsCouner
       value: 
       objectReference: {fileID: 1671570694}
+    - target: {fileID: 3764934634357836437, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3764934634357836437, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705328720689287445, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_Name
+      value: TextTotalDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566400419433656146, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_Name
+      value: TextDPS
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377988769335743480, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_Name
+      value: TextTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890480055739136420, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: _textDPS
+      value: 
+      objectReference: {fileID: 654397474}
+    - target: {fileID: 8890480055739136420, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: _textTime
+      value: 
+      objectReference: {fileID: 1513412357}
     - target: {fileID: 8890480055739136420, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
       propertyPath: _textMaxDPM
       value: 
       objectReference: {fileID: 654397474}
     - target: {fileID: 8890480055739136420, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
       propertyPath: _textCurrentDPM
+      value: 
+      objectReference: {fileID: 115201515}
+    - target: {fileID: 8890480055739136420, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: _textTotalDamage
       value: 
       objectReference: {fileID: 115201515}
     - target: {fileID: 8890480055739136420, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
