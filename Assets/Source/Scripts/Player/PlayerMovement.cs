@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _canSlide = false;
 
-        float duration = 0.3f;
+        float duration = 0.2f;
         int stepCount = (int)(duration / _stepSize);
 
         StartCoroutine(OnReloadSlide());
