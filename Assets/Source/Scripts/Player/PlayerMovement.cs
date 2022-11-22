@@ -59,8 +59,6 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator OnSlide(Vector3 direction)
     {
-        print("slide");
-
         _canSlide = false;
 
         float duration = 0.3f;

@@ -43,11 +43,6 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
             if (_spawned % _countBetweenWaves == 0)
                 yield return delayBetweenWave;
         }
-
-        Debug.Log(_target != null);
-        Debug.Log(_spawned < _maximumCount);
-        Debug.Log(_spawned);
-        Debug.Log(TryGetRandomObject(out Enemy _));
     }
 
     private void Initialize(Enemy enemy)

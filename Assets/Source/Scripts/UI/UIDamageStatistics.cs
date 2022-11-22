@@ -13,6 +13,7 @@ public class UIDamageStatistics : MonoBehaviour
     private int _totalDamage;
     private int _maxDPM;
     private Dictionary<float, int> _timeDamage = new Dictionary<float, int>();
+    private List<float> _removeKeys = new List<float>();
 
     private string _baseTextTotalDamage = "Общий урон: ";
     private string _baseTextCurrentDPM = "Текущий DPM: ";
@@ -28,8 +29,9 @@ public class UIDamageStatistics : MonoBehaviour
 
     private void Start()
     {
-
         OnDamageDealed(0);
+        StartCoroutine(CalculateDPM());
+        _textMaxDPM.text = _baseTextMaxDPM +  _maxDPM.ToString();
     }
 
     private void OnDisable()
@@ -57,7 +59,17 @@ public class UIDamageStatistics : MonoBehaviour
         _timeDamage.Add(Time.time, damage);
     }
 
-    private IEnumerator DPMCalculator()
+    private void RemoveExpiredTimeKeys()
+    {
+        for (int i = 0; i < _removeKeys.Count; i++)
+        {
+            _timeDamage.Remove(_removeKeys[i]);
+        }
+
+        _removeKeys = new List<float>();
+    }
+
+    private IEnumerator CalculateDPM()
     {
         while(true)
         {
@@ -65,11 +77,13 @@ public class UIDamageStatistics : MonoBehaviour
 
             foreach (float time in _timeDamage.Keys)
             {
-                if (time < (Time.time - 1))
-                    _timeDamage.Remove(time);
+                if (time < (Time.time - 60))
+                    _removeKeys.Add(time);
                 else
                     accumulatedValue += _timeDamage[time];
             }
+
+            RemoveExpiredTimeKeys();
 
             _textCurrentDPM.text = _baseTextCurrentDPM +  accumulatedValue.ToString();
 

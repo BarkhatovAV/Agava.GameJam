@@ -42,7 +42,6 @@ public class KillsCounterView : MonoBehaviour
     private void OnKillsCountChanged(int count)
     {
         _filledImage.fillAmount = Mathf.Lerp(0f, 1f, count / _killsCouner.MaxEnemy);
-        print(_filledImage.fillAmount);
         _textMesh.text = $"{count} / {_killsCouner.MaxEnemy}";
     }
 }
