@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,18 +7,18 @@ using UnityEngine;
 public class UIDamageStatistics : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _weapons;
+    [SerializeField] private TMP_Text _textTime;
     [SerializeField] private TMP_Text _textTotalDamage;
-    [SerializeField] private TMP_Text _textCurrentDPM;
-    [SerializeField] private TMP_Text _textMaxDPM;
+    [SerializeField] private TMP_Text _textDPS;
 
     private int _totalDamage;
-    private int _maxDPM;
-    private Dictionary<float, int> _timeDamage = new Dictionary<float, int>();
-    private List<float> _removeKeys = new List<float>();
-
+    private string _baseTextTime = "Время: ";
     private string _baseTextTotalDamage = "Общий урон: ";
-    private string _baseTextCurrentDPM = "Текущий DPM: ";
-    private string _baseTextMaxDPM = "Максимальный DPM: ";
+    private string _baseTextDPS = "Текущий DPS: ";
+
+    private DateTime _timeFromStart = new DateTime();
+    private DateTime _emptyTime = new DateTime();
+    private TimeSpan _timeSpan;
 
     private void OnEnable()
     {
@@ -30,8 +31,8 @@ public class UIDamageStatistics : MonoBehaviour
     private void Start()
     {
         OnDamageDealed(0);
-        StartCoroutine(CalculateDPM());
-        _textMaxDPM.text = _baseTextMaxDPM +  _maxDPM.ToString();
+        StartCoroutine(Timer());
+        StartCoroutine(DPSCalculator());
     }
 
     private void OnDisable()
@@ -44,56 +45,35 @@ public class UIDamageStatistics : MonoBehaviour
 
     private void OnDamageDealed(int damage)
     {
-        AddInDPM(damage);
-        TotalDamageCalculator(damage);
+        IncreaseTotalDamage(damage);
     }
 
-    private void TotalDamageCalculator(int damage)
+    private void IncreaseTotalDamage(int damage)
     {
         _totalDamage += damage;
         _textTotalDamage.text = _baseTextTotalDamage + _totalDamage.ToString();
     }
 
-    private void AddInDPM(int damage)
-    {
-        _timeDamage.Add(Time.time, damage);
-    }
-
-    private void RemoveExpiredTimeKeys()
-    {
-        for (int i = 0; i < _removeKeys.Count; i++)
-        {
-            _timeDamage.Remove(_removeKeys[i]);
-        }
-
-        _removeKeys = new List<float>();
-    }
-
-    private IEnumerator CalculateDPM()
+    private IEnumerator DPSCalculator()
     {
         while(true)
         {
-            int accumulatedValue = 0;
+            _timeSpan = _timeFromStart - _emptyTime;
 
-            foreach (float time in _timeDamage.Keys)
-            {
-                if (time < (Time.time - 60))
-                    _removeKeys.Add(time);
-                else
-                    accumulatedValue += _timeDamage[time];
-            }
+            _textDPS.text = _baseTextDPS + string.Format("{0:0.##}", _totalDamage / _timeSpan.TotalSeconds);
 
-            RemoveExpiredTimeKeys();
+            yield return new WaitForSeconds(1);
+        }
+    }
 
-            _textCurrentDPM.text = _baseTextCurrentDPM +  accumulatedValue.ToString();
-
-            if(accumulatedValue > _maxDPM)
-            {
-                _maxDPM = accumulatedValue;
-                _textMaxDPM.text = _baseTextMaxDPM +  _maxDPM.ToString();
-            }
-
+    private IEnumerator Timer()
+    {
+        while(true)
+        {
             yield return new WaitForSeconds(1f);
+
+            _timeFromStart = _timeFromStart.AddSeconds(1);
+            _textTime.text = _baseTextTime + string.Format("{0}:{1:00}", _timeFromStart.Minute, _timeFromStart.Second);
         }
     }
 }
