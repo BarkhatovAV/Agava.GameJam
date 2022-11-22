@@ -2028,7 +2028,7 @@ GameObject:
   - component: {fileID: 1987582879651158535}
   - component: {fileID: 7464378135843559314}
   m_Layer: 5
-  m_Name: "Text\u0421urrentDPM"
+  m_Name: TextTotalDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2234,7 +2234,7 @@ GameObject:
   - component: {fileID: 618495407868852020}
   - component: {fileID: 8574854929103439345}
   m_Layer: 5
-  m_Name: TextMaxDPM
+  m_Name: TextDPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2480,7 +2480,7 @@ GameObject:
   - component: {fileID: 6998848654525587402}
   - component: {fileID: 3764934634357836437}
   m_Layer: 5
-  m_Name: TextTotalDamage
+  m_Name: TextTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2870,10 +2870,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55acc2c3f2e03c94d8bad045c3ee06bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapons: []
-  _textTotalDamage: {fileID: 3764934634357836437}
-  _textCurrentDPM: {fileID: 0}
-  _textMaxDPM: {fileID: 0}
+  _weapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _textTime: {fileID: 3764934634357836437}
+  _textTotalDamage: {fileID: 7464378135843559314}
+  _textDPS: {fileID: 8574854929103439345}
 --- !u!1 &9026737306416482991
 GameObject:
   m_ObjectHideFlags: 0
