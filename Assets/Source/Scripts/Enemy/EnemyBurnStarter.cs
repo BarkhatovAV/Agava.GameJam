@@ -1,18 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBurnStarter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _burnigSeconds;
+    [SerializeField] private ParticleSystem _particleFire;
+
+    private Coroutine _coroutine;
+
+    private void OnEnable()
     {
-        
+        _particleFire.Stop();   
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.TryGetComponent(out FlameThrower flameThrower))
+            StartBurn();
     }
+
+    private void StartBurn()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(Burn());
+    }
+
+    private IEnumerator Burn()
+    {
+        _particleFire.Play();
+        yield return new WaitForSeconds(_burnigSeconds);
+        _particleFire.Stop();
+    }
+
 }
