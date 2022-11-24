@@ -23,7 +23,7 @@ public class BlastWave : MonoBehaviour
     {
         if (other.TryGetComponent(out ITarget target))
         {
-            target.Apply(_damage);
+            target.TryTakeDamage(_damage);
             Destroy(gameObject);
         }
     }

@@ -7,7 +7,7 @@ public class ParasiteAttacker : EnemyAttacker
 
     protected override void Attack(ITarget target)
     {
-        target.Apply(_damage);
+        target.TryTakeDamage(_damage);
     }
 
     protected override bool ConditionBeforeAttack()

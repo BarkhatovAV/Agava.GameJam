@@ -4,5 +4,5 @@ public interface ITarget
 {
     Vector3 CurrentPosition { get; }
 
-    void Apply(int damage);
+    void TryTakeDamage(int damage);
 }

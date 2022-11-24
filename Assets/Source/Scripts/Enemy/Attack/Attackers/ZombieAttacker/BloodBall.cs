@@ -14,7 +14,7 @@ public class BloodBall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out ITarget target))
-            target.Apply(_damage);
+            target.TryTakeDamage(_damage);
     }
 
     public IEnumerator Move(Vector3[] path)

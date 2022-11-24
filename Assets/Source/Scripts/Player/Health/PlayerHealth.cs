@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, ITarget
@@ -8,6 +9,8 @@ public class PlayerHealth : MonoBehaviour, ITarget
 
     private int _criticalHealthLevel = 50;
     private int _maxHealth = 100;
+    private bool _isDamageable;
+    private Coroutine _coroutine;
 
     public Vector3 CurrentPosition => transform.position;
     public int MaxHealth => _maxHealth;
@@ -16,35 +19,15 @@ public class PlayerHealth : MonoBehaviour, ITarget
     public event Action Died;
     public event Action HealthCriticallyReduced;
 
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-            Died?.Invoke();
+        _isDamageable = true;
     }
 
-    public void Apply(int damage)
+    public void TryTakeDamage(int damage)
     {
-        if (damage < 0)
-            throw new ArgumentOutOfRangeException(nameof(damage));
-
-        _value -= damage;
-        HealthChanged?.Invoke(_value);
-
-        if (_value <= _criticalHealthLevel)
-        {
-            HealthCriticallyReduced?.Invoke();
-        }
-
-        if (_value <= 0)
-        {
-            if(this.enabled)
-            {
-                Died?.Invoke();
-            }
-
-            this.enabled = false;
-        }
-
+        if ((_isDamageable == true) && (damage > 0))
+            TakeDamage(damage);
     }
 
     public void Heal(int health)
@@ -58,5 +41,41 @@ public class PlayerHealth : MonoBehaviour, ITarget
             _value = _maxHealth;
 
         HealthChanged?.Invoke(_value);
+    }
+
+    public void TakeBoost(float duration)
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(OnBoosted(duration));
+    }
+
+    private IEnumerator OnBoosted(float duration)
+    {
+        _isDamageable = false;
+        yield return new WaitForSeconds(duration);
+        _isDamageable = true;
+    }
+
+    private void TakeDamage(int damage)
+    {
+        _value -= damage;
+        HealthChanged?.Invoke(_value);
+
+        if (_value <= _criticalHealthLevel)
+        {
+            HealthCriticallyReduced?.Invoke();
+        }
+
+        if (_value <= 0)
+        {
+            if (this.enabled)
+            {
+                Died?.Invoke();
+            }
+
+            this.enabled = false;
+        }
     }
 }
