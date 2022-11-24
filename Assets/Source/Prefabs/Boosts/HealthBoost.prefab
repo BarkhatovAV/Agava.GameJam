@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 6399651752992725151}
   - component: {fileID: 7257571943742376822}
   - component: {fileID: 6852244666335046116}
-  - component: {fileID: -7805563610028310850}
+  - component: {fileID: -8211763878623295826}
   m_Layer: 0
   m_Name: HealthBoost
   m_TagString: Untagged
@@ -441,7 +441,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-7805563610028310850
+--- !u!114 &-8211763878623295826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -450,10 +450,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5681198181493809962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dbdd95bb97625446bdf10b3943411af, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ac7462d91ecb14469ef85256956fdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 10
+  _value: 50
 --- !u!1 &5771985598363817937
 GameObject:
   m_ObjectHideFlags: 0
