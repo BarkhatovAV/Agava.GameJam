@@ -4,22 +4,37 @@ using UnityEngine.UI;
 
 public class UISliderReloader : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement _movement;
+    [SerializeField] private PlayerSlider _slider;
     [SerializeField] private Image _imageSlider;
+
+    private Coroutine _coroutine;
 
     private void OnEnable()
     {
-        _movement.SlideReloadStarted += OnSliderReloadStarted;
+        _slider.ReloadStarted += OnReloadStarted;
+        _slider.ReloadCanceled += OnReloadCanceled;
     }
 
     private void OnDisable()
     {
-        _movement.SlideReloadStarted -= OnSliderReloadStarted;
+        _slider.ReloadStarted -= OnReloadStarted;
+        _slider.ReloadCanceled -= OnReloadCanceled;
     }
 
-    private void OnSliderReloadStarted(float duration)
+    private void OnReloadCanceled()
     {
-        StartCoroutine(OnSliderReload(duration));
+        if(_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _imageSlider.fillAmount = 1;
+    }
+
+    private void OnReloadStarted(float duration)
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(OnSliderReload(duration));
     }
 
     private IEnumerator OnSliderReload(float duration)
