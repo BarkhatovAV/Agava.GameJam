@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BoostAnimator : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _rotationSpeed;
-    [SerializeField] private float _amplitude;
+    [SerializeField] private float _speed = 0.8f;
+    [SerializeField] private float _rotationSpeed = 50;
+    [SerializeField] private float _amplitude = 0.5f;
 
     private Coroutine _coroutine;
     private Vector3 _topPosition;
