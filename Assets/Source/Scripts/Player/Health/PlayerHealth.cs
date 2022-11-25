@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour, ITarget
 {
     [Range(0, 100)]
     [SerializeField] private int _value = 100;
+    [SerializeField] private GameObject _visualImmortalBoost;
 
     private int _criticalHealthLevel = 50;
     private int _maxHealth = 100;
@@ -54,7 +55,9 @@ public class PlayerHealth : MonoBehaviour, ITarget
     private IEnumerator OnBoosted(float duration)
     {
         _isDamageable = false;
+        _visualImmortalBoost.SetActive(true);
         yield return new WaitForSeconds(duration);
+        _visualImmortalBoost.SetActive(false);
         _isDamageable = true;
     }
 

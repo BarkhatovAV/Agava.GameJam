@@ -7,6 +7,7 @@ public class PlayerSlider : MonoBehaviour
 {
     [SerializeField] private float _slidePower;
     [SerializeField] private float _sliderReloadTime;
+    [SerializeField] private GameObject _visualSlideBoost;
 
     private Rigidbody _rigidbody;
     private Coroutine _coroutineSlide;
@@ -70,7 +71,9 @@ public class PlayerSlider : MonoBehaviour
     private IEnumerator OnBoosted(float duration)
     {
         _isBoosted = true;
+        _visualSlideBoost.SetActive(true);
         yield return new WaitForSeconds(duration);
+        _visualSlideBoost.SetActive(false);
         _isBoosted = false;
     }
 
