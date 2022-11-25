@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealingBoost : MonoBehaviour
+public class HealingBoost : Boost
 {
     [SerializeField] private int _value;
 

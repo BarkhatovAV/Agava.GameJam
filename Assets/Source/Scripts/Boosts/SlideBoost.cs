@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SlideBoost : MonoBehaviour
+public class SlideBoost : Boost
 {
     [SerializeField] private float _duration;
 
