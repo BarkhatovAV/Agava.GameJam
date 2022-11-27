@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -10,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Vector3 _direction;
+    private Vector3 _directionVelocity;
 
     private void Awake()
     {
@@ -18,29 +17,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        _direction = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W))
-            _direction += Vector3.forward;
-        if (Input.GetKey(KeyCode.S))
-            _direction -= Vector3.forward;
-        if (Input.GetKey(KeyCode.D))
-            _direction += Vector3.right;
-        if (Input.GetKey(KeyCode.A))
-            _direction -= Vector3.right;
-
         if (Input.GetKeyDown(KeyCode.LeftShift))
             _slider.TryUse(_direction);
-
-        MoveDirection(_direction);
-
     }
 
-    private void MoveDirection(Vector3 direction)
+    private void FixedUpdate()
     {
-        Vector3 normilizedDirection = direction.normalized;
-        Vector3 move = Quaternion.Euler(0, transform.eulerAngles.y, 0) * normilizedDirection * _speed * Time.deltaTime;
+        Move();
+    }
 
-        _rigidbody.velocity =  new Vector3(move.x, _rigidbody.velocity.y, move.z);
-    }    
+    private void Move()
+    {
+        _direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+
+        _directionVelocity = transform.TransformDirection(_direction) * _speed * Time.deltaTime;
+
+        Vector3 velocityChange = (_directionVelocity - _rigidbody.velocity);
+        velocityChange.y = 0;
+
+        _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+    }
 }
