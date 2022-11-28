@@ -12,6 +12,8 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
     public virtual void Fire(RaycastHit hitInfo)
     {
+        print(hitInfo.collider);
+
         if (hitInfo.collider.TryGetComponent(out Enemy enemy))
             enemy.Apply(_damage);
     }

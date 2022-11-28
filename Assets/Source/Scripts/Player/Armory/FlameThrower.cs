@@ -18,13 +18,16 @@ public class FlameThrower : Weapon, IWeapon
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+            _collider.enabled = true;
+
         if(Input.GetMouseButtonUp(0))
             _collider.enabled = false;
     }
 
-    public override void Fire()
+    public override void Fire(RaycastHit hitInfo)
     {
-        _collider.enabled = true;
+        //_collider.enabled = true;
     }
 
     private void OnTriggerStay(Collider other)
