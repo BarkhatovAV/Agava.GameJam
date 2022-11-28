@@ -11,7 +11,6 @@ public class BoostSpawner : MonoBehaviour
     [SerializeField] private int _countExemplarsTemplate;
 
     private int _currentSpawned;
-    private Transform _lastSpawnPoint;
     private Coroutine _coroutine;
     private List<Boost> _boosts = new List<Boost>();
 
@@ -42,10 +41,21 @@ public class BoostSpawner : MonoBehaviour
         boost.gameObject.SetActive(false);
     }
 
-    private void OnTaken()
+    private void OnTaken(Vector3 point)
     {
+        ActivateSpawnPoint(point);
         _currentSpawned--;
         TrySpawn();
+    }
+
+    private void ActivateSpawnPoint(Vector3 point)
+    {
+        for (int i = 0; i < _spawnPoints.Count; i++)
+            if (_spawnPoints[i].position == point)
+            {
+                _spawnPoints[i].gameObject.SetActive(true);
+                return;
+            }
     }
 
     private void FillPool()
@@ -69,16 +79,11 @@ public class BoostSpawner : MonoBehaviour
         boost.gameObject.SetActive(true);
         _currentSpawned++;
         _coroutine = null;
-        print("Spawned");
         TrySpawn();
     }
 
     private void TrySpawn()
     {
-        print(_coroutine == null);
-        print(_coroutine);
-        print(_currentSpawned <= _maxNumberSpawnAtSameTime);
-
         if ((_coroutine == null) && (_currentSpawned < _maxNumberSpawnAtSameTime))
             _coroutine = StartCoroutine(OnWaitingSpawn());
     }
@@ -100,17 +105,16 @@ public class BoostSpawner : MonoBehaviour
         {
             int spawnPointIndex = GetRandomIndex(_spawnPoints.Count);
 
-            if (_spawnPoints[spawnPointIndex] != _lastSpawnPoint)
+            if (_spawnPoints[spawnPointIndex].gameObject.activeSelf == true)
             {
-                _lastSpawnPoint = _spawnPoints[spawnPointIndex];
-                return _lastSpawnPoint;
+                _spawnPoints[spawnPointIndex].gameObject.SetActive(false);
+                return _spawnPoints[spawnPointIndex];
             }
         }
     }
 
     private IEnumerator OnWaitingSpawn()
     {
-        print("enterCoroutine");
         yield return new WaitForSeconds(_delaySpawnTime);
         SpawnBoost();
     }

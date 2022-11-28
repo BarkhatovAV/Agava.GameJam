@@ -5,10 +5,10 @@ using UnityEngine;
 
 public abstract class Boost : MonoBehaviour
 {
-    public event Action Taken;
+    public event Action<Vector3> Taken;
 
     protected void OnTake()
     {
-        Taken?.Invoke();
+        Taken?.Invoke(transform.position);
     }
 }

@@ -578,6 +578,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27112315}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &33492914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33492915}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &33492915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33492914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.84, y: 2.06, z: 110.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1149303983}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &35950841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8111,7 +8142,7 @@ MonoBehaviour:
   - {fileID: 1896175862}
   - {fileID: 2133196758}
   - {fileID: 975993910}
-  _delaySpawnTime: 2
+  _delaySpawnTime: 30
   _maxNumberSpawnAtSameTime: 2
   _countExemplarsTemplate: 2
 --- !u!4 &680336942
@@ -15506,6 +15537,59 @@ Transform:
   - {fileID: 1212627764}
   m_Father: {fileID: 1230482740}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1149303981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1149303983}
+  - component: {fileID: 1149303982}
+  m_Layer: 0
+  m_Name: SpawnerHealth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1149303982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149303981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015c04569d6d28841a67e5a4f8cbbcbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _templates:
+  - {fileID: 3876104321783170900, guid: f1df21d3ed880fa4b9c663dfc0cf6d27, type: 3}
+  - {fileID: 3876104321783170900, guid: f1df21d3ed880fa4b9c663dfc0cf6d27, type: 3}
+  _spawnPoints:
+  - {fileID: 33492915}
+  _delaySpawnTime: 30
+  _maxNumberSpawnAtSameTime: 1
+  _countExemplarsTemplate: 3
+--- !u!4 &1149303983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149303981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 33492915}
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1149473653
 GameObject:
@@ -30762,7 +30846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2383396666099338477, guid: 0794e8bffb25b204eb5a44c81625a785, type: 3}
       propertyPath: _sensitivity
-      value: 350
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2383396666099338477, guid: 0794e8bffb25b204eb5a44c81625a785, type: 3}
       propertyPath: _playerCamera
@@ -31139,6 +31223,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1820835850, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 908595242132827540, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 908595242132827540, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1318109433792988285, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
