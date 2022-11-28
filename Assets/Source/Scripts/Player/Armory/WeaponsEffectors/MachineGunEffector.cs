@@ -11,6 +11,9 @@ public class MachineGunEffector : WeaponEffector
     [SerializeField] private Material _material;
     [SerializeField] private ParticleSystem _particleBulletsShells;
     [SerializeField] private ParticleSystem _particleFire;
+    [SerializeField] private Weapon _weapon;
+    [SerializeField] private SpawnerBullets _spawner;
+    [SerializeField] private Transform _shootPoint;
 
     private Animator _animator;
     private AudioSource _audioEffect;
@@ -36,14 +39,15 @@ public class MachineGunEffector : WeaponEffector
         StopPlayParticles();
         _reloadable.ReloadStarted += OnReloadStarted;
         _reloadable.ReloadFinished += OnReloadFinished;
+        _weapon.Fired += OnFired;
     }
 
     private void OnDisable()
     {
         _reloadable.ReloadStarted -= OnReloadStarted;
         _reloadable.ReloadFinished -= OnReloadFinished;
+        _weapon.Fired -= OnFired;
     }
-
     protected override void StartPlayEffects()
     {
         if( _isEffectsEnable == true)
@@ -66,6 +70,12 @@ public class MachineGunEffector : WeaponEffector
 
     }
 
+
+    private void OnFired()
+    {
+        _spawner.Spawn(_shootPoint);
+    }
+
     private void OnReloadStarted(float reloadTime)
     {
         StopPlayEffects();
@@ -76,6 +86,9 @@ public class MachineGunEffector : WeaponEffector
     private void OnReloadFinished()
     {
         _isEffectsEnable = true;
+
+        if (Input.GetMouseButton(0))
+            StartPlayEffects();
     }
 
 

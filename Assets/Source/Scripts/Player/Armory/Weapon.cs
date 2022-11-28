@@ -9,10 +9,11 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     protected float _lastTimeShot;
 
     public event Action<int> DamageDealed;
+    public event Action Fired;
 
     public virtual void Fire(RaycastHit hitInfo)
     {
-        print(hitInfo.collider);
+        Fired?.Invoke();
 
         if (hitInfo.collider.TryGetComponent(out Enemy enemy))
             enemy.Apply(_damage);

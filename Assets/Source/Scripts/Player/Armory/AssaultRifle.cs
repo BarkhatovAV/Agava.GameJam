@@ -14,6 +14,13 @@ public class AssaultRifle : Weapon, IReloadable
     public event Action<float> ReloadStarted;
     public event Action ReloadFinished;
 
+    private void OnEnable()
+    {
+
+        if (CheckNeedReload() == true)
+            Reload();
+    }
+
     private void Start()
     {
         _bullets.AddBullets(1000000000);
@@ -39,6 +46,7 @@ public class AssaultRifle : Weapon, IReloadable
         StartCoroutine(OnReload());
         ReloadStarted?.Invoke(_reloadTime);
     }
+
 
     public void TakeBullets(int value)
     {

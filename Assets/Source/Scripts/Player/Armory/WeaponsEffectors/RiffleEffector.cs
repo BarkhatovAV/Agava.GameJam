@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -6,6 +7,10 @@ public class RiffleEffector : WeaponEffector
 {
     [SerializeField] private ParticleSystem _particleBulletsShells;
     [SerializeField] private ParticleSystem _particleFire;
+    [SerializeField] private Weapon _weapon;
+    [SerializeField] private SpawnerBullets _spawner;
+    [SerializeField] private Transform _shootPoint;
+
 
     private AudioSource _audioEffect;
     private IReloadable _reloadable;
@@ -25,12 +30,19 @@ public class RiffleEffector : WeaponEffector
         ReturnOnBaseTransform();
         _reloadable.ReloadStarted += OnReloadStarted;
         _reloadable.ReloadFinished += OnReloadFinished;
+        _weapon.Fired += OnFired;
     }
 
     private void OnDisable()
     {
         _reloadable.ReloadStarted -= OnReloadStarted;
         _reloadable.ReloadFinished -= OnReloadFinished;
+        _weapon.Fired -= OnFired;
+    }
+
+    private void OnFired()
+    {
+        _spawner.Spawn(_shootPoint);
     }
 
     protected override void StartPlayEffects()
@@ -60,6 +72,9 @@ public class RiffleEffector : WeaponEffector
     private void OnReloadFinished()
     {
         _isEffectsEnable = true;
+
+        if (Input.GetMouseButton(0))
+            StartPlayEffects();
     }
 
     private void PlayParticles()
