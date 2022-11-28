@@ -7,69 +7,111 @@ public class BoostSpawner : MonoBehaviour
     [SerializeField] private List<Boost> _templates;
     [SerializeField] private List<Transform> _spawnPoints;
     [SerializeField] private float _delaySpawnTime;
+    [SerializeField] private int _maxNumberSpawnAtSameTime;
+    [SerializeField] private int _countExemplarsTemplate;
 
+    private int _currentSpawned;
     private Transform _lastSpawnPoint;
+    private Coroutine _coroutine;
     private List<Boost> _boosts = new List<Boost>();
 
     private void Start()
     {
-        for (int i = 0; i < _templates.Count; i++)
-        {
-            CreateBoost(i);           
-        }
-
-        DeactiveBoosts();
+        FillPool();
+        TrySpawn();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+            SpawnBoost();
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < _boosts.Count; i++)
+            _boosts[i].Taken -= OnTaken;
+    }
+
 
     private void CreateBoost(int index)
     {
         Boost boost = Instantiate(_templates[index], transform);
         _boosts.Add(boost);
+        boost.Taken += OnTaken;
         boost.gameObject.SetActive(false);
     }
 
-    private void Update()
+    private void OnTaken()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-            SpawnBoost();
+        _currentSpawned--;
+        TrySpawn();
     }
+
+    private void FillPool()
+    {
+        for (int i = 0; i < _templates.Count; i++)
+            for (int j = 0; j < _countExemplarsTemplate; j++)
+                CreateBoost(i);
+    }
+
 
     private int GetRandomIndex(int elementsCount)
     {
         return Random.Range(0, elementsCount);
     }
 
-    private void DeactiveBoosts()
-    {
-        for (int i = 0; i < _boosts.Count; i++)
-            _boosts[i].gameObject.SetActive(false);
-    }
 
     private void SpawnBoost()
     {
         Boost boost = GetRandomTemplate();
         boost.transform.position = GetRandomSpawnPoint().position;
         boost.gameObject.SetActive(true);
+        _currentSpawned++;
+        _coroutine = null;
+        print("Spawned");
+        TrySpawn();
+    }
+
+    private void TrySpawn()
+    {
+        print(_coroutine == null);
+        print(_coroutine);
+        print(_currentSpawned <= _maxNumberSpawnAtSameTime);
+
+        if ((_coroutine == null) && (_currentSpawned < _maxNumberSpawnAtSameTime))
+            _coroutine = StartCoroutine(OnWaitingSpawn());
     }
 
     private Boost GetRandomTemplate()
     {
-        int boostIndex = GetRandomIndex(_boosts.Count);
+        while(true)
+        {
+            int boostIndex = GetRandomIndex(_boosts.Count);
 
-        if (_boosts[boostIndex].gameObject.activeSelf == false)
-            return _boosts[boostIndex];
-        else
-            return GetRandomTemplate();
+            if (_boosts[boostIndex].gameObject.activeSelf == false)
+                return _boosts[boostIndex];
+        }
     }
 
     private Transform GetRandomSpawnPoint()
     {
-        int spawnPointIndex = GetRandomIndex(_spawnPoints.Count);
+        while(true)
+        {
+            int spawnPointIndex = GetRandomIndex(_spawnPoints.Count);
 
-        if (_spawnPoints[spawnPointIndex].gameObject.activeSelf == false)
-            return _spawnPoints[spawnPointIndex];
-        else
-            return GetRandomSpawnPoint();
+            if (_spawnPoints[spawnPointIndex] != _lastSpawnPoint)
+            {
+                _lastSpawnPoint = _spawnPoints[spawnPointIndex];
+                return _lastSpawnPoint;
+            }
+        }
+    }
 
+    private IEnumerator OnWaitingSpawn()
+    {
+        print("enterCoroutine");
+        yield return new WaitForSeconds(_delaySpawnTime);
+        SpawnBoost();
     }
 }

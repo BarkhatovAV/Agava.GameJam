@@ -9,6 +9,7 @@ public class SlideBoost : Boost
         if (other.TryGetComponent(out PlayerSlider slider))
         {
             slider.TakeBoost(_duration);
+            OnTake();
             gameObject.SetActive(false);
         }
     }

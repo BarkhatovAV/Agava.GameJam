@@ -43,20 +43,12 @@ public class EnemyMover : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out MoveSlower slower))
-        {
             _agent.speed *= 0.5f;
-            print("enter " + _agent.speed);
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out MoveSlower slower))
-        {
-            _agent.speed *= 2f;
-            print("exit " + _agent.speed);
-
-        }
-            
+            _agent.speed *= 2f;            
     }
 }

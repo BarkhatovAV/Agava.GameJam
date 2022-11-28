@@ -9,6 +9,7 @@ public class HealingBoost : Boost
         if (other.TryGetComponent(out PlayerHealth player))
         {
             player.Heal(_value);
+            OnTake();
             gameObject.SetActive(false);
         }
     }
