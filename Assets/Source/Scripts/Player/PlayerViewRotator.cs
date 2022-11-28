@@ -12,6 +12,12 @@ public class PlayerViewRotator : MonoBehaviour
     private void Update()
     {
         Look();
+
+        if (Input.GetKeyDown(KeyCode.O))
+            _sensitivity += 50;
+
+        if(Input.GetKeyDown(KeyCode.P))
+            _sensitivity -= 50;
     }
 
     private void Look()

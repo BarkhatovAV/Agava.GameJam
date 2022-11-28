@@ -37,4 +37,16 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out MoveSlower slower))
+            _speed *= 0.5f;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out MoveSlower slower))
+            _speed *= 2f;
+    }
 }

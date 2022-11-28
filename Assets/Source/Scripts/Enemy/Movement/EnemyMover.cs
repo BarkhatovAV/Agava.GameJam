@@ -21,6 +21,7 @@ public class EnemyMover : MonoBehaviour
             throw new ArgumentNullException(nameof(target));
 
         _target = target;
+
     }
 
     public void MoveToTarget()
@@ -36,5 +37,26 @@ public class EnemyMover : MonoBehaviour
     {
         _agent.isStopped = true;
         _animator.SetBool(EnemyAnimator.Params.IsRunning, false);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out MoveSlower slower))
+        {
+            _agent.speed *= 0.5f;
+            print("enter " + _agent.speed);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out MoveSlower slower))
+        {
+            _agent.speed *= 2f;
+            print("exit " + _agent.speed);
+
+        }
+            
     }
 }

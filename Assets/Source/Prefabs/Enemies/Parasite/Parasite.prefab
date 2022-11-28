@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed3a00bb462f2c438c4aa54c2532e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clonesCount: 50
+  _clonesCount: 1
 --- !u!114 &6139506080482404967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,8 +436,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.2
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!54 &-1256917077988532914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -466,7 +466,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.47948423, y: 2.0219746, z: 0.39100963}
-  m_Center: {x: 0.0020419806, y: 1.0164573, z: -0.005919315}
+  m_Center: {x: 0.0020419806, y: 0.9, z: -0.005919315}
 --- !u!114 &2697778302493103563
 MonoBehaviour:
   m_ObjectHideFlags: 0
