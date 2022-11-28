@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IWeapon 
 {
-    void Fire();
+    void Fire(RaycastHit hitinfo);
 }

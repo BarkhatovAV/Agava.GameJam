@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(IReloadable))]
 public class MachineGun : Weapon, IReloadable
 {
     [SerializeField] private int _clipSize;
@@ -10,7 +9,7 @@ public class MachineGun : Weapon, IReloadable
 
     private BulletsArmory _bullets = new BulletsArmory();
     private int _currentClipAmount;
-    private bool _isCanShoot;
+    private bool _canShoot;
 
     public event Action<float> ReloadStarted;
     public event Action ReloadFinished;
@@ -19,16 +18,16 @@ public class MachineGun : Weapon, IReloadable
     {
         _bullets.AddBullets(1000000000);
         _currentClipAmount = _clipSize;
-        _isCanShoot = true;
+        _canShoot = true;
     }
 
-    public override void Fire()
+    public override void Fire(RaycastHit hitInfo)
     {
-        if ((_isCanShoot == true) && (CheckDelay() == true))
+        if ((_canShoot == true) && (CheckDelay() == true))
         {
             _currentClipAmount--;
 
-            base.Fire();
+            base.Fire(hitInfo);
 
             if (CheckNeedReload() == true)
                 Reload();
@@ -37,7 +36,7 @@ public class MachineGun : Weapon, IReloadable
 
     public void Reload()
     {
-        _isCanShoot = false;
+        _canShoot = false;
         StartCoroutine(OnReload());
         ReloadStarted?.Invoke(_reloadTime);
     }
@@ -61,7 +60,7 @@ public class MachineGun : Weapon, IReloadable
         else
             _currentClipAmount = _bullets.Value;
 
-        _isCanShoot = true;
+        _canShoot = true;
         ReloadFinished?.Invoke();
     }
 }

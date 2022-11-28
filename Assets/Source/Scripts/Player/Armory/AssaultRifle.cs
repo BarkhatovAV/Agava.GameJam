@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AssaultRifle : Weapon, IReloadable
@@ -22,12 +21,12 @@ public class AssaultRifle : Weapon, IReloadable
         _canShoot = true;
     }
 
-    public override void Fire()
+    public override void Fire(RaycastHit hitInfo)
     {
         if ((_canShoot == true) && (CheckDelay() == true))
         {
             _currentClipAmount--;
-            base.Fire();
+            base.Fire(hitInfo);
 
             if (CheckNeedReload() == true)
                 Reload();
