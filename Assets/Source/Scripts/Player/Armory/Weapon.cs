@@ -16,7 +16,10 @@ public abstract class Weapon : MonoBehaviour, IWeapon
         Fired?.Invoke();
 
         if (hitInfo.collider.TryGetComponent(out Enemy enemy))
+        {
             enemy.Apply(_damage);
+            DamageDealed(_damage);
+        }
     }
 
     protected void DealingDamage(int damage)
