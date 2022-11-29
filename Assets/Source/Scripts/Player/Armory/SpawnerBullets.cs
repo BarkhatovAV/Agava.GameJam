@@ -28,7 +28,6 @@ public class SpawnerBullets : MonoBehaviour
 
     public void Spawn(Transform _shootPoint)
     {
-        print("here");
         Bullet bullet = _bullets.FirstOrDefault(deactiveExemplar => deactiveExemplar.gameObject.activeSelf == false);
 
 

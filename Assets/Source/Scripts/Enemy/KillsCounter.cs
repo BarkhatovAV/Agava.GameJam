@@ -27,6 +27,11 @@ public class KillsCounter : MonoBehaviour
         _enemiesSpawner.Spawned += OnSpawned;
     }
 
+    private void Start()
+    {
+        KillsCountChanged?.Invoke(0);
+    }
+
     private void OnDisable()
     {
         _enemiesSpawner.Spawned += OnSpawned;

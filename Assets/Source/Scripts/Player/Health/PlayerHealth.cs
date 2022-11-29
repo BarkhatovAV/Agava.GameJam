@@ -25,6 +25,11 @@ public class PlayerHealth : MonoBehaviour, ITarget
         _currentValue = _maxValue;
     }
 
+    private void Start()
+    {
+        HealthChanged?.Invoke(_currentValue, _maxValue);
+    }
+
     public void TryTakeDamage(int damage)
     {
         if ((_isDamageable == true) && (damage > 0))

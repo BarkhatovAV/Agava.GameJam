@@ -1,47 +1,28 @@
-using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class KillsCounterView : MonoBehaviour
+public class KillsCounterView : UIBar
 {
-    [SerializeField] private SlicedFilledImage _filledImage;
-    [SerializeField] private TextMeshProUGUI _textMesh;
-    [SerializeField] private KillsCounter _killsCouner;
-    [SerializeField] private Animator _animator;
+    [SerializeField] private KillsCounter _killsCounter;
 
-    private string _pulseAnimation = "Pulse";
 
     private void OnValidate()
     {
-        _killsCouner = FindObjectOfType<KillsCounter>();
+        _killsCounter = FindObjectOfType<KillsCounter>();
     }
 
     private void OnEnable()
     {
-        _killsCouner.KillsCountChanged += OnKillsCountChanged;
-        _killsCouner.CounterTriggered += OnCounterTriggered;
+        _killsCounter.KillsCountChanged += OnKillsCountChanged;
     }
+
 
     private void OnDisable()
     {
-        _killsCouner.KillsCountChanged -= OnKillsCountChanged;
-        _killsCouner.CounterTriggered -= OnCounterTriggered;
+        _killsCounter.KillsCountChanged -= OnKillsCountChanged;
     }
 
-    private void OnCounterTriggered()
+    private void OnKillsCountChanged(int currentValue)
     {
-        _animator.SetTrigger(_pulseAnimation);
-    }
-
-    private void Awake()
-    {
-        _filledImage.fillAmount = 0;
-    }
-
-    private void OnKillsCountChanged(int count)
-    {
-        _filledImage.fillAmount = Mathf.Lerp(0f, 1f, count / _killsCouner.MaxEnemy);
-        _textMesh.text = $"{count} / {_killsCouner.MaxEnemy}";
+        OnValueChanged(currentValue, _killsCounter.MaxEnemy);
     }
 }
