@@ -5,24 +5,24 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, ITarget
 {
     [Range(0, 100)]
-    [SerializeField] private int _value = 100;
+    [SerializeField] private int _maxValue = 100;
     [SerializeField] private GameObject _visualImmortalBoost;
 
     private int _criticalHealthLevel = 50;
-    private int _maxHealth = 100;
+    private int _currentValue;
     private bool _isDamageable;
     private Coroutine _coroutine;
 
     public Vector3 CurrentPosition => transform.position;
-    public int MaxHealth => _maxHealth;
 
-    public event Action<float> HealthChanged;
+    public event Action<float, float> HealthChanged;
     public event Action Died;
     public event Action HealthCriticallyReduced;
 
     private void Awake()
     {
         _isDamageable = true;
+        _currentValue = _maxValue;
     }
 
     public void TryTakeDamage(int damage)
@@ -36,12 +36,9 @@ public class PlayerHealth : MonoBehaviour, ITarget
         if (health < 0)
             throw new ArgumentOutOfRangeException(nameof(health));
 
-        _value += health;
+        _currentValue = Mathf.Clamp(_currentValue + health, 0, _maxValue);
 
-        if (_value >= _maxHealth)
-            _value = _maxHealth;
-
-        HealthChanged?.Invoke(_value);
+        HealthChanged?.Invoke(_currentValue, _maxValue);
     }
 
     public void TakeBoost(float duration)
@@ -63,15 +60,15 @@ public class PlayerHealth : MonoBehaviour, ITarget
 
     private void TakeDamage(int damage)
     {
-        _value -= damage;
-        HealthChanged?.Invoke(_value);
+        _currentValue -= damage;
+        HealthChanged?.Invoke(_currentValue, _maxValue);
 
-        if (_value <= _criticalHealthLevel)
+        if (_currentValue <= _criticalHealthLevel)
         {
             HealthCriticallyReduced?.Invoke();
         }
 
-        if (_value <= 0)
+        if (_currentValue <= 0)
         {
             if (this.enabled)
             {
