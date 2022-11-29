@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemiesSpawner : ObjectsPool<Enemy>
 {
     [Min(0)]
-    [SerializeField] private float _secondsBetweenSpawn;
-    [Min(0)]
     [SerializeField] private int _maximumCount;
     [Min(0)]
     [SerializeField] private int _countBetweenWaves;
@@ -17,6 +15,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [SerializeField] private Transform _contaner;
 
     private int _spawned;
+    private float _secondsBetweenSpawn;
 
     public int MaximumCount => _maximumCount;
 
@@ -24,14 +23,15 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
 
     private void Start()
     {
+        _secondsBetweenSpawn = SpawnerSettings.TimeBetweenSpawn;
         Initialize(_contaner);
         StartCoroutine(Spawn());
     }
 
     private IEnumerator Spawn()
     {
-        var delayBetweenSpawn = new WaitForSeconds(_secondsBetweenSpawn);
-        var delayBetweenWave = new WaitForSeconds(_secondsBetweenWaves);
+        WaitForSeconds delayBetweenSpawn = new WaitForSeconds(_secondsBetweenSpawn);
+        WaitForSeconds delayBetweenWave = new WaitForSeconds(_secondsBetweenWaves);
 
         while (_target != null && _spawned < _maximumCount && TryGetRandomObject(out Enemy enemy))
         {
