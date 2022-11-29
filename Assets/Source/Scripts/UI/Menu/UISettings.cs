@@ -10,11 +10,14 @@ public class UISettings : MonoBehaviour
     [SerializeField] private Button _buttonSwitchSoundOff;
     [SerializeField] private Button _buttonSwitchSoundOn;
     [SerializeField] private Button _buttonClose;
+    [SerializeField] private GameObject _panelMainMenu;
+    [SerializeField] private GameObject _panelSettings;
 
     private void OnEnable()
     {
         _buttonSwitchSoundOff.onClick.AddListener(OnButtonSwitchSoundOffClick);
         _buttonSwitchSoundOn.onClick.AddListener(OnButtonSwitchSoundOnClick);
+        _buttonClose.onClick.AddListener(OnButtonCloseClick);
         _sliderVolume.onValueChanged.AddListener(OnVolumeChanged);
         _sliderSensitivity.onValueChanged.AddListener(OnSensitivityChanged);
         LoadSettings();
@@ -24,6 +27,7 @@ public class UISettings : MonoBehaviour
     {
         _buttonSwitchSoundOff.onClick.RemoveListener(OnButtonSwitchSoundOffClick);
         _buttonSwitchSoundOn.onClick.RemoveListener(OnButtonSwitchSoundOnClick);
+        _buttonClose.onClick.RemoveListener(OnButtonCloseClick);
         _sliderVolume.onValueChanged.RemoveListener(OnVolumeChanged);
         _sliderSensitivity.onValueChanged.AddListener(OnSensitivityChanged);
     }
@@ -53,6 +57,12 @@ public class UISettings : MonoBehaviour
         AudioListener.pause = true;
         AudioListener.volume = 0;
         SettingsSaver.AudioPause = 1;
+    }
+
+    private void OnButtonCloseClick()
+    {
+        _panelMainMenu.SetActive(true);
+        _panelSettings.SetActive(false);
     }
 
     private void OnVolumeChanged(float value)
