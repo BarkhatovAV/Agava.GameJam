@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
 
     private void Move()
     {
-        var target = Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.forward * _speed;
+        var target = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0) * Vector3.forward * _speed;
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + target, _speed * Time.deltaTime);
 

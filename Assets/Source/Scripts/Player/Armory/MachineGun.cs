@@ -14,20 +14,26 @@ public class MachineGun : Weapon, IReloadable
     public event Action<float> ReloadStarted;
     public event Action ReloadFinished;
 
-    private void Start()
+    private void Awake()
     {
         _bullets.AddBullets(1000000000);
         _currentClipAmount = _clipSize;
         _canShoot = true;
     }
 
-    public override void Fire(RaycastHit hitInfo)
+    private void OnEnable()
+    {
+        if (CheckNeedReload() == true)
+            Reload();
+    }
+
+    public override void Fire(Collider collider = null)
     {
         if ((_canShoot == true) && (CheckDelay() == true))
         {
             _currentClipAmount--;
 
-            base.Fire(hitInfo);
+            base.Fire(collider);
 
             if (CheckNeedReload() == true)
                 Reload();

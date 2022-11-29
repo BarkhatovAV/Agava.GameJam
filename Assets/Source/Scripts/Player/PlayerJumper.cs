@@ -8,6 +8,7 @@ public class PlayerJumper : MonoBehaviour
     private Rigidbody _rigidbody;
     private bool _isGround;
     private bool _isDoubleJumpAllow;
+    private float _velocityYLimit = 10;
 
     private void Awake()
     {
@@ -18,6 +19,15 @@ public class PlayerJumper : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
             TryJump();
+
+        ClampVelocityY();
+    }
+
+    private void ClampVelocityY()
+    {
+        Vector3 velocity = _rigidbody.velocity;
+        velocity.y = Mathf.Clamp(velocity.y, -_velocityYLimit, _velocityYLimit);
+        _rigidbody.velocity = velocity;
     }
 
     private void TryJump()

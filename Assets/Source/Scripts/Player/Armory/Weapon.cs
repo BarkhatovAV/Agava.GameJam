@@ -11,11 +11,11 @@ public abstract class Weapon : MonoBehaviour, IWeapon
     public event Action<int> DamageDealed;
     public event Action Fired;
 
-    public virtual void Fire(RaycastHit hitInfo)
+    public virtual void Fire(Collider collider = null)
     {
         Fired?.Invoke();
 
-        if (hitInfo.collider.TryGetComponent(out Enemy enemy))
+        if ((collider != null) && (collider.TryGetComponent(out Enemy enemy)))
         {
             enemy.Apply(_damage);
             DamageDealed(_damage);

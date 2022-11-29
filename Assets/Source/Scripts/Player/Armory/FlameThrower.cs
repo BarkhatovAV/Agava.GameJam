@@ -25,7 +25,7 @@ public class FlameThrower : Weapon, IWeapon
             _collider.enabled = false;
     }
 
-    public override void Fire(RaycastHit hitInfo)
+    public override void Fire(Collider collider = null)
     {
         //_collider.enabled = true;
     }

@@ -27,8 +27,10 @@ public class PlayerShooter : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo))
             {
-                _currentWeapon.Fire(hitInfo);
+                _currentWeapon.Fire(hitInfo.collider);
             }
+            else
+                _currentWeapon.Fire();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
