@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemiesSpawner : ObjectsPool<Enemy>
 {
@@ -16,6 +17,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
 
     private int _spawned;
     private float _secondsBetweenSpawn;
+    private EnemySpanwerSetter _enemySpanwerSetter;
 
     public int MaximumCount => _maximumCount;
 
@@ -23,7 +25,8 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
 
     private void Start()
     {
-        _secondsBetweenSpawn = SpawnerSettings.TimeBetweenSpawn;
+        _enemySpanwerSetter = new EnemySpanwerSetter();
+        _secondsBetweenSpawn = _enemySpanwerSetter.GetSecondsBetweenSpawn();
         Initialize(_contaner);
         StartCoroutine(Spawn());
     }
@@ -55,5 +58,34 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     private Vector3 GetRandomSpawnPoint()
     {
         return _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)].position;
+    }
+}
+
+public class EnemySpanwerSetter
+{
+    private static int levelNumber = SceneManager.GetActiveScene().buildIndex;
+
+    private int levelDifficulty = LevelsDifficultySaver.GetLevelDifficulty(levelNumber);
+
+    public float GetSecondsBetweenSpawn()
+    {
+        switch(levelDifficulty)
+        {
+            case 0:
+                return 3f;
+            case 1:
+                return 2.5f;
+            case 2:
+                return 2f;
+            case 3:
+                return 1f;
+            case 4:
+                return 0.5f;
+            case 5:
+                return 0.5f;
+
+            default:
+                return 3f;
+        }
     }
 }

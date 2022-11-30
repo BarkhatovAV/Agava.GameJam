@@ -13,7 +13,7 @@ public class UILevel : MonoBehaviour
 
     private bool _isUnlimited;
 
-    public int LevelNumber => _levelNumber;
+    public int Number => _levelNumber;
     public bool IsUnlimited => _isUnlimited;
 
     public event Action<UILevel> LevelSelected;

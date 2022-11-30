@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, ITarget
 {
-    [Range(0, 100)]
-    [SerializeField] private int _maxValue = 100;
     [SerializeField] private GameObject _visualImmortalBoost;
 
     private int _criticalHealthLevel = 50;
     private int _currentValue;
     private bool _isDamageable;
     private Coroutine _coroutine;
+    private int _maxValue;
 
     public Vector3 CurrentPosition => transform.position;
 
@@ -21,6 +20,7 @@ public class PlayerHealth : MonoBehaviour, ITarget
 
     private void Awake()
     {
+        _maxValue = LevelSetting.PlayerHealth;
         _isDamageable = true;
         _currentValue = _maxValue;
     }

@@ -9,6 +9,7 @@ public class UILevelSelector : MonoBehaviour
 
     private UILevel _selectedLevel;
 
+    public int Number => _selectedLevel.Number;
     public event Action<UILevel> NewLevelSelected;
 
     private void OnValidate()

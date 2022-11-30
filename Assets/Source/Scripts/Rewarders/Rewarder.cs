@@ -21,7 +21,7 @@ public abstract class Rewarder : MonoBehaviour
 
     private void OnButtonRewardedClick()
     {
-        //ad component will be use here _ad.ShowVideo(OnRewarded);
+        //ad component will be used here _ad.ShowVideo(OnRewarded);
         OnRewarded();
     }
 
