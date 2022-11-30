@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class UISettings : MonoBehaviour
 {
-    [SerializeField] private Slider _sliderVolume;
+    [SerializeField] private Slider _sliderMusicVolume;
+    [SerializeField] private Slider _sliderEffectsVolume;
     [SerializeField] private Slider _sliderSensitivity;
     [SerializeField] private Button _buttonSwitchSoundOff;
     [SerializeField] private Button _buttonSwitchSoundOn;
@@ -18,7 +19,8 @@ public class UISettings : MonoBehaviour
         _buttonSwitchSoundOff.onClick.AddListener(OnButtonSwitchSoundOffClick);
         _buttonSwitchSoundOn.onClick.AddListener(OnButtonSwitchSoundOnClick);
         _buttonClose.onClick.AddListener(OnButtonCloseClick);
-        _sliderVolume.onValueChanged.AddListener(OnVolumeChanged);
+        _sliderMusicVolume.onValueChanged.AddListener(OnMusicVolumeChanged);
+        _sliderEffectsVolume.onValueChanged.AddListener(OnEffectsVolumeChanged);
         _sliderSensitivity.onValueChanged.AddListener(OnSensitivityChanged);
         LoadSettings();
     }
@@ -28,14 +30,15 @@ public class UISettings : MonoBehaviour
         _buttonSwitchSoundOff.onClick.RemoveListener(OnButtonSwitchSoundOffClick);
         _buttonSwitchSoundOn.onClick.RemoveListener(OnButtonSwitchSoundOnClick);
         _buttonClose.onClick.RemoveListener(OnButtonCloseClick);
-        _sliderVolume.onValueChanged.RemoveListener(OnVolumeChanged);
-        _sliderSensitivity.onValueChanged.AddListener(OnSensitivityChanged);
+        _sliderMusicVolume.onValueChanged.RemoveListener(OnMusicVolumeChanged);
+        _sliderEffectsVolume.onValueChanged.RemoveListener(OnEffectsVolumeChanged);
+        _sliderSensitivity.onValueChanged.RemoveListener(OnSensitivityChanged);
     }
 
     private void LoadSettings()
     {
         ChooseSoundDisplayButton();
-        _sliderVolume.value = SettingsSaver.Volume;
+        _sliderMusicVolume.value = SettingsSaver.MusicVolume;
         _sliderSensitivity.value = SettingsSaver.Sensitivity;
     }
 
@@ -48,7 +51,7 @@ public class UISettings : MonoBehaviour
     private void OnButtonSwitchSoundOnClick()
     {
         AudioListener.pause = false;
-        AudioListener.volume = SettingsSaver.Volume;
+        AudioListener.volume = SettingsSaver.MusicVolume;
         SettingsSaver.AudioPause = 0;
     }
 
@@ -65,10 +68,15 @@ public class UISettings : MonoBehaviour
         _panelSettings.SetActive(false);
     }
 
-    private void OnVolumeChanged(float value)
+    private void OnMusicVolumeChanged(float value)
     {
-        SettingsSaver.Volume = value;
-        AudioListener.volume = SettingsSaver.Volume;
+        SettingsSaver.MusicVolume = value;
+        AudioListener.volume = SettingsSaver.MusicVolume;
+    }
+
+    private void OnEffectsVolumeChanged(float arg0)
+    {
+        throw new NotImplementedException();
     }
 
     private void OnSensitivityChanged(float value)

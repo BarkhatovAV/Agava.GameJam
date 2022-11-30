@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class SettingsSaver
 {
     private const string c_Sound = "Sound";
-    private const string c_Volume = "Volume";
+    private const string c_MusicVolume = "MusicVolume";
+    private const string c_EffectsVolume = "EffectsVolume";
     private const string c_Sensitivity = "Sensitivity";
 
 
@@ -21,16 +20,28 @@ public static class SettingsSaver
         set { PlayerPrefs.SetInt(c_Sound, value); }
     }
 
-    public static float Volume
+    public static float MusicVolume
     {
         get
         {
-            if (PlayerPrefs.HasKey(c_Volume))
-                return PlayerPrefs.GetFloat(c_Volume);
+            if (PlayerPrefs.HasKey(c_MusicVolume))
+                return PlayerPrefs.GetFloat(c_MusicVolume);
             else
                 return 1;
         }
-        set { PlayerPrefs.SetFloat(c_Volume, value); }
+        set { PlayerPrefs.SetFloat(c_MusicVolume, value); }
+    }
+
+    public static float EffectsVolume
+    {
+        get
+        {
+            if (PlayerPrefs.HasKey(c_EffectsVolume))
+                return PlayerPrefs.GetFloat(c_EffectsVolume);
+            else
+                return 1;
+        }
+        set { PlayerPrefs.SetFloat(c_EffectsVolume, value); }
     }
 
     public static float Sensitivity
