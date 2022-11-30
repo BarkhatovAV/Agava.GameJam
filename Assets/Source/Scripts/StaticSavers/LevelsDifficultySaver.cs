@@ -9,6 +9,9 @@ public static class LevelsDifficultySaver
 
     public static int GetLevelDifficulty(string key)
     {
-        return PlayerPrefs.GetInt(key);
+       if(PlayerPrefs.HasKey(key))
+            return PlayerPrefs.GetInt(key);
+       else
+            return 0;
     }
 }

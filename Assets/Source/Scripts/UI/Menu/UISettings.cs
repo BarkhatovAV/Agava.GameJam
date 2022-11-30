@@ -74,7 +74,7 @@ public class UISettings : MonoBehaviour
         AudioListener.volume = SettingsSaver.MusicVolume;
     }
 
-    private void OnEffectsVolumeChanged(float arg0)
+    private void OnEffectsVolumeChanged(float value)
     {
         throw new NotImplementedException();
     }

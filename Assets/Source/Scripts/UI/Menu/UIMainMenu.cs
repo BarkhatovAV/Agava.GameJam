@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private Button _buttonGameMode;
     [SerializeField] private Button _buttonSettings;
     [SerializeField] private GameObject _panelMainMenu;
-    [SerializeField] private GameObject _panelGameMode;
+    [SerializeField] private GameObject _panelBattle;
     [SerializeField] private GameObject _panelSettings;
 
 
@@ -25,13 +26,12 @@ public class UIMainMenu : MonoBehaviour
     private void OnButtonGameModeClick()
     {
         _panelMainMenu.SetActive(false);
-        _panelGameMode.SetActive(true);
+        _panelBattle.SetActive(true);
     }
 
     private void OnButtonSettingsClick()
     {
         _panelMainMenu.SetActive(false);
         _panelSettings.SetActive(true);
-
     }
 }
