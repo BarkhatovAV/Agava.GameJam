@@ -7,9 +7,6 @@ public class StartLevelSettings : MonoBehaviour
 
     private int _startHealth = 100;
     private int _livesCount = 1;
-    private int _TimeBetweenSpawn;
-    private bool _isUnlimited;
-
 
     private void OnEnable()
     {
@@ -23,7 +20,12 @@ public class StartLevelSettings : MonoBehaviour
         _rewardStartHealth.Rewarded -= AddStartHelath;
     }
 
-    public void StartLevel()
+    private void Start()
+    {
+        
+    }
+
+    public void StartLevel(UILevel uiLevel)
     {
 
     }
@@ -36,15 +38,5 @@ public class StartLevelSettings : MonoBehaviour
     private void AddLive()
     {
         _livesCount = 2;
-    }
-
-    private void SetTimeBetweenspawn()
-    {
-
-    }
-
-    private void SetUnlimitedMode(bool isUnlimited)
-    {
-        _isUnlimited = isUnlimited;
     }
 }

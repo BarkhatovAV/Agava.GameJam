@@ -2,13 +2,20 @@ using UnityEngine;
 
 public static class LevelsDifficultySaver
 {
-    public static void SaveLevelDifficulty(string key, int value)
+    private const string c_Level = "LevelDifficulty";
+
+    public static void IncreaseLevelDifficulty(int number)
     {
+        string key = c_Level + number.ToString();
+        int value = GetLevelDifficulty(number) + 1;
+
         PlayerPrefs.SetInt(key, value);
     }
 
-    public static int GetLevelDifficulty(string key)
+    public static int GetLevelDifficulty(int number)
     {
+        string key = c_Level + number.ToString();
+
        if(PlayerPrefs.HasKey(key))
             return PlayerPrefs.GetInt(key);
        else
