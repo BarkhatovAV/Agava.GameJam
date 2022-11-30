@@ -1,18 +1,31 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UILevelSelector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<UILevel> _uiLevels;
+
+    private UILevel _selectedLevel;
+
+    public event Action<UILevel> NewLevelSelected;
+
+    private void OnValidate()
     {
-        
+        _uiLevels = FindObjectsOfType<UILevel>().ToList();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        for(int i = 0; i < _uiLevels.Count; i++)
+            _uiLevels[i].LevelSelected += OnLevelSelected;  
     }
+
+    private void OnLevelSelected(UILevel uiLevel)
+    {
+        _selectedLevel = uiLevel;
+        NewLevelSelected?.Invoke(uiLevel);
+    }
+
 }
