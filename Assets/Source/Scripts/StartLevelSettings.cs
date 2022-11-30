@@ -24,6 +24,12 @@ public class StartLevelSettings : MonoBehaviour
         _levelSelector.NewLevelSelected -= OnNewLevelSelected;
     }
 
+    private void Start()
+    {
+        LevelSetting.PlayerHealth = _startHealth;
+        LevelSetting.PlayerLivesCount = _livesCount;
+    }
+
     private void OnNewLevelSelected(UILevel uiLevel)
     {
         LevelSetting.IsUnlimited = uiLevel.IsUnlimited;

@@ -3,13 +3,18 @@ using UnityEngine;
 public static class LevelsDifficultySaver
 {
     private const string c_Level = "LevelDifficulty";
-
-    public static void IncreaseLevelDifficulty(int number)
+    private const int c_MaxDifficulty = 6;
+    public static void TryIncreaseLevelDifficulty(int number)
     {
         string key = c_Level + number.ToString();
-        int value = GetLevelDifficulty(number) + 1;
+        int value = GetLevelDifficulty(number);
 
-        PlayerPrefs.SetInt(key, value);
+
+        if (GetLevelDifficulty(number) > c_MaxDifficulty)
+        {
+            value++;
+            PlayerPrefs.SetInt(key, value);
+        }
     }
 
     public static int GetLevelDifficulty(int number)
