@@ -18,12 +18,10 @@ public class LevelFinisher : MonoBehaviour
 
     private void OnLimitReached()
     {
-        print("here");
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
         int levelNumber = SceneManager.GetActiveScene().buildIndex;
-        print(levelNumber);
         LevelsDifficultySaver.TryIncreaseLevelDifficulty(levelNumber);
-        print("afterTry");
         _panelLevelFinish.gameObject.SetActive(true);
-        print("activated");
     }
 }

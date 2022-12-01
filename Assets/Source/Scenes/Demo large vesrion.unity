@@ -633,7 +633,7 @@ PrefabInstance:
       objectReference: {fileID: 2096427961}
     - target: {fileID: 1832605906619893150, guid: be1451784be071d47888a0a2d1e932a5, type: 3}
       propertyPath: _maximumCount
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2302528473493783614, guid: be1451784be071d47888a0a2d1e932a5, type: 3}
       propertyPath: m_LocalPosition.x

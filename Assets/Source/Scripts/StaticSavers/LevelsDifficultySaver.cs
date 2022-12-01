@@ -10,7 +10,7 @@ public static class LevelsDifficultySaver
         int value = GetLevelDifficulty(number);
 
 
-        if (GetLevelDifficulty(number) > c_MaxDifficulty)
+        if (GetLevelDifficulty(number) < c_MaxDifficulty)
         {
             value++;
             PlayerPrefs.SetInt(key, value);
