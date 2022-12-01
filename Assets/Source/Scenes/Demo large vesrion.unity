@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: _spawner
       value: 
       objectReference: {fileID: 1249998535}
+    - target: {fileID: 2243635009829898608, guid: 0794e8bffb25b204eb5a44c81625a785, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2383396665383871060, guid: 0794e8bffb25b204eb5a44c81625a785, type: 3}
       propertyPath: _armory
       value: 
@@ -756,6 +760,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c278cf6981b189468b0a670343347f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1375409351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1375409353}
+  - component: {fileID: 1375409352}
+  m_Layer: 0
+  m_Name: Ad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1375409352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375409351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f46d8734fa5684d8232033e7a4d2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1375409353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375409351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 70.393814, y: 54.277664, z: 24.466953}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1593976268
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +976,7 @@ PrefabInstance:
     - target: {fileID: 616203833534675554, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 0590ae1c379cc7842beae6357dd1a1c2, type: 2}
+      objectReference: {fileID: 23800000, guid: ad53942b69e89f846b003ea2f9f41e52, type: 2}
     - target: {fileID: 616203833791959746, guid: dabdba4e73f1e91448807a60cf55ff83, type: 3}
       propertyPath: m_Name
       value: EnvironmentLevel1
@@ -1471,6 +1519,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7391531720757598965, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
+      propertyPath: _ad
+      value: 
+      objectReference: {fileID: 1375409352}
     - target: {fileID: 8122014167252788160, guid: 1adb0471baf66cd4fb0422a72e42066e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -6,6 +5,7 @@ using UnityEngine.UI;
 public class UIPanelLevelFinish : MonoBehaviour
 {
     [SerializeField] private Button _buttonMainMenu;
+    [SerializeField] private Ad _ad;
 
     private void OnEnable()
     {
@@ -24,6 +24,7 @@ public class UIPanelLevelFinish : MonoBehaviour
 
     private void OnButtonMainMenuClick()
     {
+        _ad.InterestialAdShow();
         SceneManager.LoadScene(0);
     }
 }
