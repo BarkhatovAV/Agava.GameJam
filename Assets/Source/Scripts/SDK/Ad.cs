@@ -66,18 +66,6 @@ public class Ad : MonoBehaviour
         }
     }
 
-    private void OnVideoClose(bool _)
-    {
-        _isAdShow = false;
-
-        if (Convert.ToBoolean(SettingsSaver.AudioPause))
-        {
-            AudioListener.pause = false;
-            AudioListener.volume = 0.5f;
-
-        }
-    }
-
     private void OnError(string _)
     {
         _isAdShow = false;
