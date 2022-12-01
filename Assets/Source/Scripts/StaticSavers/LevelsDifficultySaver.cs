@@ -3,7 +3,7 @@ using UnityEngine;
 public static class LevelsDifficultySaver
 {
     private const string c_Level = "LevelDifficulty";
-    private const int c_MaxDifficulty = 6;
+    private const int c_MaxDifficulty = 5;
     public static void TryIncreaseLevelDifficulty(int number)
     {
         string key = c_Level + number.ToString();

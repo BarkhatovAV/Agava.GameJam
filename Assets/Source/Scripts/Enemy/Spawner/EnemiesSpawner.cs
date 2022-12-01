@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class EnemiesSpawner : ObjectsPool<Enemy>
 {
     [Min(0)]
-    [SerializeField] private int _maximumCount;
-    [Min(0)]
     [SerializeField] private int _countBetweenWaves;
     [Min(0)]
     [SerializeField] private float _secondsBetweenWaves;
@@ -16,6 +14,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     [SerializeField] private Transform _contaner;
 
     private int _spawned;
+    private int _maximumCount;
     private float _secondsBetweenSpawn;
     private EnemySpanwerSetter _enemySpanwerSetter;
 
@@ -26,7 +25,8 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     private void Start()
     {
         _enemySpanwerSetter = new EnemySpanwerSetter();
-        _secondsBetweenSpawn = _enemySpanwerSetter.GetSecondsBetweenSpawn();
+        _secondsBetweenSpawn = _enemySpanwerSetter.TimeBetweenSpawn;
+        _maximumCount = _enemySpanwerSetter.EnemiesCount;
         Initialize(_contaner);
         StartCoroutine(Spawn());
     }
@@ -66,8 +66,12 @@ public class EnemySpanwerSetter
     private static int levelNumber = SceneManager.GetActiveScene().buildIndex;
 
     private int levelDifficulty = LevelsDifficultySaver.GetLevelDifficulty(levelNumber);
+    private int _baseEnemiesCount = 150;
 
-    public float GetSecondsBetweenSpawn()
+    public float TimeBetweenSpawn => GetSecondsBetweenSpawn();
+    public int EnemiesCount => (int)(_baseEnemiesCount / GetSecondsBetweenSpawn());
+
+    private float GetSecondsBetweenSpawn()
     {
         switch(levelDifficulty)
         {

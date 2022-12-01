@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public static class SettingsSaver
@@ -8,16 +9,20 @@ public static class SettingsSaver
     private const string c_Sensitivity = "Sensitivity";
 
 
-    public static int AudioPause
+    public static bool AudioPause
     {
         get
         {
             if (PlayerPrefs.HasKey(c_Sound))
-                return PlayerPrefs.GetInt(c_Sound);
+            {
+                bool isLevelUnlimited = Convert.ToBoolean(PlayerPrefs.GetString(c_Sound));
+
+                return isLevelUnlimited;
+            }
             else
-                return 1;
+                return false;
         }
-        set { PlayerPrefs.SetInt(c_Sound, value); }
+        set { PlayerPrefs.SetString(c_Sound, value.ToString()); }
     }
 
     public static float MusicVolume

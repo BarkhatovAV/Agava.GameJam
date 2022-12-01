@@ -44,22 +44,26 @@ public class UISettings : MonoBehaviour
 
     private void ChooseSoundDisplayButton()
     {
-        if (SettingsSaver.AudioPause == 1)
+        if (SettingsSaver.AudioPause == true)
+        {
             OnButtonSwitchSoundOffClick();
+            _buttonSwitchSoundOn.gameObject.SetActive(true);
+            _buttonSwitchSoundOff.gameObject.SetActive(false);
+        }
     }
 
     private void OnButtonSwitchSoundOnClick()
     {
         AudioListener.pause = false;
         AudioListener.volume = SettingsSaver.MusicVolume;
-        SettingsSaver.AudioPause = 0;
+        SettingsSaver.AudioPause = AudioListener.pause;
     }
 
     private void OnButtonSwitchSoundOffClick()
     {
         AudioListener.pause = true;
         AudioListener.volume = 0;
-        SettingsSaver.AudioPause = 1;
+        SettingsSaver.AudioPause = AudioListener.pause;
     }
 
     private void OnButtonCloseClick()

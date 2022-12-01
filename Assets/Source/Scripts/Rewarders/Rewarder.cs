@@ -4,7 +4,7 @@ using System;
 
 public abstract class Rewarder : MonoBehaviour
 {
-    [SerializeField] private string _ad = "Here will be ad component";
+    [SerializeField] private Ad _ad;
     [SerializeField] private Button _buttonreward;
 
     public event Action Rewarded;
@@ -21,8 +21,7 @@ public abstract class Rewarder : MonoBehaviour
 
     private void OnButtonRewardedClick()
     {
-        //ad component will be used here _ad.ShowVideo(OnRewarded);
-        OnRewarded();
+        _ad.ShowRewardVideo(OnRewarded);
     }
 
     private void OnRewarded()
