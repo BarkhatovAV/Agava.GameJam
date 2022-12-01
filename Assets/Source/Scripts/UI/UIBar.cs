@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public abstract class UIBar : MonoBehaviour
 {
@@ -19,8 +20,13 @@ public abstract class UIBar : MonoBehaviour
 
         _coroutine = StartCoroutine(OnChanging(currentValue / maxValue));
 
+        if(maxValue == Int32.MaxValue)
+            _textMaxValue.text = "∞";
+        else
+            _textMaxValue.text = maxValue.ToString();
+
         _textCurrentValue.text = currentValue.ToString();
-        _textMaxValue.text = maxValue.ToString();
+
     }
 
     private void ChangeValue(float targetValue)
