@@ -12,15 +12,16 @@ public class UILevelSelector : MonoBehaviour
     public int Number => _selectedLevel.Number;
     public event Action<UILevel> NewLevelSelected;
 
-    private void OnValidate()
+    private void OnEnable()
     {
-        _uiLevels = FindObjectsOfType<UILevel>().ToList();
+        for (int i = 0; i < _uiLevels.Count; i++)
+            _uiLevels[i].LevelSelected += OnLevelSelected;
     }
 
-    private void Start()
+    private void OnDisable()
     {
-        for(int i = 0; i < _uiLevels.Count; i++)
-            _uiLevels[i].LevelSelected += OnLevelSelected;  
+        for (int i = 0; i < _uiLevels.Count; i++)
+            _uiLevels[i].LevelSelected -= OnLevelSelected;
     }
 
     private void OnLevelSelected(UILevel uiLevel)

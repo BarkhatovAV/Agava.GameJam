@@ -51,7 +51,7 @@ public static class SettingsSaver
             if (PlayerPrefs.HasKey(c_Sensitivity))
                 return PlayerPrefs.GetFloat(c_Sensitivity);
             else
-                return 1;
+                return 100;
         }
         set { PlayerPrefs.SetFloat(c_Sensitivity, value); }
     }

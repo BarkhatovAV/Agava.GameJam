@@ -2,22 +2,21 @@ using UnityEngine;
 
 public class PlayerViewRotator : MonoBehaviour
 {
-    [SerializeField] private float _sensitivity;
     [SerializeField] private Camera _playerCamera;
 
+    private float _sensitivity;
     private float _verticalAxis;
     private float _horizontalAxis;
     private float _verticalLimit = 75;
 
+    private void Start()
+    {
+        _sensitivity = SettingsSaver.Sensitivity;
+    }
+
     private void Update()
     {
         Look();
-
-        if (Input.GetKeyDown(KeyCode.O))
-            _sensitivity += 50;
-
-        if(Input.GetKeyDown(KeyCode.P))
-            _sensitivity -= 50;
     }
 
     private void Look()
