@@ -56,13 +56,11 @@ public class UILevel : MonoBehaviour
     private void OnButtonSwitchOnClick()
     {
         _isUnlimited = true;
-        print(_isUnlimited);
     }
 
     private void OnButtonSwitchOffClick()
     {
         _isUnlimited = false;
-        print(_isUnlimited);
     }
 
     private void OnButtonLevelClick()

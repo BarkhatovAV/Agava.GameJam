@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,13 @@ public class LevelLoader : MonoBehaviour
     private void OnButtonBattleClick()
     {
         LevelLoadStarted?.Invoke();
+
+        StartCoroutine(OnLevelLoad());
+    }
+
+    private IEnumerator OnLevelLoad()
+    {
+        yield return new WaitForSeconds(1f);
 
         int levelNumber = _levelSelector.Number;
         SceneManager.LoadScene(levelNumber);

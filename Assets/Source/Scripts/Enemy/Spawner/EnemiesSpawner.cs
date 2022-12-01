@@ -17,6 +17,7 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
     private int _maximumCount;
     private float _secondsBetweenSpawn;
     private EnemySpanwerSetter _enemySpanwerSetter;
+    private bool _isUnlimited;
 
     public int MaximumCount => _maximumCount;
 
@@ -24,27 +25,46 @@ public class EnemiesSpawner : ObjectsPool<Enemy>
 
     private void Start()
     {
-        _enemySpanwerSetter = new EnemySpanwerSetter();
-        _secondsBetweenSpawn = _enemySpanwerSetter.TimeBetweenSpawn;
-        _maximumCount = _enemySpanwerSetter.EnemiesCount;
+        SetUpSpawner();
         Initialize(_contaner);
         StartCoroutine(Spawn());
+    }
+
+    private void SetUpSpawner()
+    {
+        _enemySpanwerSetter = new EnemySpanwerSetter();
+        _secondsBetweenSpawn = _enemySpanwerSetter.TimeBetweenSpawn;
+        _isUnlimited = LevelSetting.IsUnlimited;
+
+        if (_isUnlimited == false)
+            _maximumCount = _enemySpanwerSetter.EnemiesCount;
+        else
+            _maximumCount = Int32.MaxValue;
     }
 
     private IEnumerator Spawn()
     {
         WaitForSeconds delayBetweenSpawn = new WaitForSeconds(_secondsBetweenSpawn);
         WaitForSeconds delayBetweenWave = new WaitForSeconds(_secondsBetweenWaves);
+        bool isContinueSpawn = true;
 
-        while (_target != null && _spawned < _maximumCount && TryGetRandomObject(out Enemy enemy))
+
+        while (isContinueSpawn)
         {
-            Initialize(enemy);
-            Spawned?.Invoke(enemy);
-            _spawned++;
+            if(_isUnlimited == false)
+                isContinueSpawn = (_target != null && _spawned < _maximumCount);
+
+            if (TryGetRandomObject(out Enemy enemy))
+            {
+                Initialize(enemy);
+                Spawned?.Invoke(enemy);
+                _spawned++;
+            }
             yield return delayBetweenSpawn;
 
             if (_spawned % _countBetweenWaves == 0)
                 yield return delayBetweenWave;
+
         }
     }
 

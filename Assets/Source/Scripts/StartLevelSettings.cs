@@ -6,6 +6,7 @@ public class StartLevelSettings : MonoBehaviour
     [SerializeField] private RewarderAdditionalLives _rewardAddLive;
     [SerializeField] private RewarderStartHealth _rewardStartHealth;
     [SerializeField] private UILevelSelector _levelSelector;
+    [SerializeField] private LevelLoader _levelLoader;
 
     private int _startHealth = 100;
     private int _livesCount = 1;
@@ -14,14 +15,14 @@ public class StartLevelSettings : MonoBehaviour
     {
         _rewardAddLive.Rewarded += AddLive;
         _rewardStartHealth.Rewarded += AddStartHelath;
-        _levelSelector.NewLevelSelected += OnNewLevelSelected;
+        _levelLoader.LevelLoadStarted += OnLevelLoadStarted;
     }
 
     private void OnDisable()
     {
         _rewardAddLive.Rewarded -= AddLive;
         _rewardStartHealth.Rewarded -= AddStartHelath;
-        _levelSelector.NewLevelSelected -= OnNewLevelSelected;
+        _levelLoader.LevelLoadStarted -= OnLevelLoadStarted;
     }
 
     private void Start()
@@ -30,9 +31,9 @@ public class StartLevelSettings : MonoBehaviour
         LevelSetting.PlayerLivesCount = _livesCount;
     }
 
-    private void OnNewLevelSelected(UILevel uiLevel)
+    private void OnLevelLoadStarted()
     {
-        LevelSetting.IsUnlimited = uiLevel.IsUnlimited;
+        LevelSetting.IsUnlimited = _levelSelector.SelectedLevel.IsUnlimited;
     }
 
     private void AddStartHelath()
