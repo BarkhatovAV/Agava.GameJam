@@ -8,6 +8,8 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private Button _buttonBatle;
     [SerializeField] private UILevelSelector _levelSelector;
 
+    public event Action LevelLoadStarted;
+
     private void OnEnable()
     {
         _buttonBatle.onClick.AddListener(OnButtonBattleClick);
@@ -20,6 +22,8 @@ public class LevelLoader : MonoBehaviour
 
     private void OnButtonBattleClick()
     {
+        LevelLoadStarted?.Invoke();
+
         int levelNumber = _levelSelector.Number;
         SceneManager.LoadScene(levelNumber);
     }

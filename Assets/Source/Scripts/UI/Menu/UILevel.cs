@@ -10,18 +10,24 @@ public class UILevel : MonoBehaviour
     [SerializeField] private StarsDisplayer _starsDisplayer;
     [SerializeField] private Button _buttonLevel;
     [SerializeField] private UILevelSelector _levelSelector;
+    [SerializeField] private Sprite _spritePreviewLevel;
+    [SerializeField] private Image _imagePreviewLevel;
 
     private bool _isUnlimited;
 
     public int Number => _levelNumber;
     public bool IsUnlimited => _isUnlimited;
+    public Sprite PreviewLevel => _spritePreviewLevel;
 
     public event Action<UILevel> LevelSelected;
+
 
     private void Awake()
     {
         if (_levelSelector == null)
             _levelSelector = FindObjectOfType<UILevelSelector>();
+
+        _imagePreviewLevel.sprite = _spritePreviewLevel;
     }
 
     private void OnEnable()
