@@ -28,5 +28,6 @@ public abstract class Rewarder : MonoBehaviour
     private void OnRewarded()
     {
         Rewarded?.Invoke();
+        _buttonreward.interactable = false;
     }
 }

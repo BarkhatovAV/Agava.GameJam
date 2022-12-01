@@ -62,7 +62,7 @@ public class UILevel : MonoBehaviour
     private void OnButtonLevelClick()
     {
         LevelSelected?.Invoke(this);
-        _buttonLevel.image.color = Color.yellow;
+        _buttonLevel.image.color = Color.green;
     }
 
     private void OnNewLevelSelected(UILevel uiLevel)
