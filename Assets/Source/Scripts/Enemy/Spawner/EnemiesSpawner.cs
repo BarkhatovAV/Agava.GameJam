@@ -68,6 +68,7 @@ public class EnemySpanwerSetter
     private int levelDifficulty = LevelsDifficultySaver.GetLevelDifficulty(levelNumber);
     private int _baseEnemiesCount = 150;
 
+    public int Difficulty => levelDifficulty;
     public float TimeBetweenSpawn => GetSecondsBetweenSpawn();
     public int EnemiesCount => (int)(_baseEnemiesCount / GetSecondsBetweenSpawn());
 
