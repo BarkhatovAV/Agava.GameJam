@@ -444,7 +444,7 @@ PrefabInstance:
       objectReference: {fileID: 1249998535}
     - target: {fileID: 2243635009829898608, guid: 0794e8bffb25b204eb5a44c81625a785, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2383396665383871060, guid: 0794e8bffb25b204eb5a44c81625a785, type: 3}
       propertyPath: _armory
